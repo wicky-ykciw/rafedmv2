@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAF EDM Content Hub | TMGM Q2 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFBFC; --white: #FFFFFF; --dark: #111827; --grey-900: #1F2937;
+  --grey-700: #374151; --grey-600: #4B5563; --grey-500: #6B7280;
+  --grey-400: #9CA3AF; --grey-300: #D1D5DB; --grey-200: #E5E7EB;
+  --grey-100: #F3F4F6; --grey-50: #F9FAFB;
+  --blue: #3B82F6; --blue-light: #EFF6FF; --blue-dark: #1E40AF;
+  --purple: #8B5CF6; --purple-light: #F5F3FF;
+  --green: #10B981; --green-light: #ECFDF5;
+  --amber: #F59E0B; --amber-light: #FFFBEB;
+  --red: #EF4444; --red-light: #FEF2F2;
+  --font: 'Inter', -apple-system, system-ui, sans-serif;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.06), 0 4px 6px rgba(0,0,0,0.04);
+  --radius: 12px; --radius-lg: 16px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font); color:var(--dark); background:var(--bg); line-height:1.6; -webkit-font-smoothing:antialiased; }
+
+/* HEADER */
+.header { background:var(--white); border-bottom:1px solid var(--grey-200); padding:24px 40px; position:sticky; top:0; z-index:100; }
+.header-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+.header-left h1 { font-size:18px; font-weight:800; color:var(--dark); letter-spacing:-0.3px; }
+.header-left p { font-size:12px; color:var(--grey-500); margin-top:2px; }
+.header-right { display:flex; gap:8px; }
+.header-badge { padding:4px 12px; border-radius:20px; font-size:11px; font-weight:600; }
+.badge-inviter { background:var(--blue-light); color:var(--blue-dark); }
+.badge-invitee { background:var(--purple-light); color:var(--purple); }
+
+/* MAIN */
+.main { max-width:1200px; margin:0 auto; padding:32px 40px 80px; }
+
+/* JOURNEY FLOW */
+.journey { margin-bottom:40px; padding:28px 32px; background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--grey-200); box-shadow:var(--shadow-sm); }
+.journey-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--grey-400); margin-bottom:16px; }
+.j-node { padding:16px 14px; border-radius:10px; text-align:center; cursor:pointer; transition:all 0.25s ease; text-decoration:none; position:relative; }
+.j-node:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.j-node.inviter { background:var(--blue-light); border:1.5px solid rgba(59,130,246,0.2); }
+.j-node.invitee { background:var(--purple-light); border:1.5px solid rgba(139,92,246,0.2); }
+.j-node.flagged { border-color:var(--red); background:var(--red-light); }
+.j-node.winner { border-color:var(--green); background:var(--green-light); }
+.j-node .j-num { font-size:10px; font-weight:800; color:var(--white); width:20px; height:20px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:6px; }
+.j-node.inviter .j-num { background:var(--blue); }
+.j-node.invitee .j-num { background:var(--purple); }
+.j-node.flagged .j-num { background:var(--red); }
+.j-node.winner .j-num { background:var(--green); }
+.j-node .j-name { font-size:13px; font-weight:700; color:var(--dark); line-height:1.3; }
+.j-node .j-trigger { font-size:11px; color:var(--grey-500); margin-top:3px; }
+
+/* CONNECTORS between nodes */
+.journey-flow { display:flex; flex-direction:column; gap:14px; position:relative; }
+.journey-row { display:flex; gap:14px; align-items:stretch; position:relative; z-index:1; }
+.journey-row:hover { z-index:10; }
+.journey-row .j-node { flex:1; }
+.j-node.has-arrow-right::after {
+  content:'→';
+  position:absolute;
+  right:-12px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:14px;
+  color:var(--grey-300);
+  font-weight:700;
+  z-index:2;
+}
+.j-node.has-arrow-down::after {
+  content:'↓';
+  position:absolute;
+  bottom:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:14px;
+  color:var(--grey-300);
+  font-weight:700;
+  z-index:2;
+}
+/* Inviter connector line (row 1: 1→2) */
+.j-node[data-seq="inviter"].has-arrow-right::after { color:var(--blue); }
+/* Invitee connector lines */
+.j-node[data-seq="invitee"].has-arrow-right::after { color:var(--purple); opacity:0.5; }
+.j-node[data-seq="invitee"].has-arrow-down::after { color:var(--purple); opacity:0.5; }
+/* Separator between inviter & invitee in row 1 */
+/* Brighten connectors when sequence is active */
+.j-node.connected.has-arrow-right::after,
+.j-node.active-node.has-arrow-right::after { opacity:1 !important; }
+.j-node.connected.has-arrow-down::after,
+.j-node.active-node.has-arrow-down::after { opacity:1 !important; }
+.j-node.dimmed.has-arrow-right::after,
+.j-node.dimmed.has-arrow-down::after { opacity:0.15 !important; }
+
+/* TOOLTIPS */
+.j-node .j-tooltip {
+  position:absolute;
+  bottom:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--grey-900);
+  color:var(--white);
+  font-size:12px;
+  font-weight:500;
+  line-height:1.5;
+  padding:10px 14px;
+  border-radius:8px;
+  white-space:normal;
+  width:220px;
+  text-align:left;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 0.2s, visibility 0.2s;
+  pointer-events:none;
+  z-index:50;
+  box-shadow:var(--shadow-lg);
+}
+.j-node .j-tooltip::after {
+  content:'';
+  position:absolute;
+  top:100%;
+  left:50%;
+  transform:translateX(-50%);
+  border:6px solid transparent;
+  border-top-color:var(--grey-900);
+}
+.j-node:hover .j-tooltip { opacity:1; visibility:visible; }
+
+/* Top row tooltips drop BELOW the card */
+.j-node .j-tooltip.tip-bottom {
+  bottom:auto;
+  top:calc(100% + 10px);
+}
+.j-node .j-tooltip.tip-bottom::after {
+  top:auto;
+  bottom:100%;
+  border-top-color:transparent;
+  border-bottom-color:var(--grey-900);
+}
+
+/* Separator between Inviter & Invitee */
+.j-separator {
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:help;
+  flex:0 0 20px;
+  padding:0 2px;
+}
+.j-separator .sep-line {
+  width:1.5px;
+  height:70%;
+  min-height:50px;
+  background:var(--grey-200);
+  border-radius:1px;
+}
+.j-separator .j-tooltip {
+  position:absolute;
+  top:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--grey-900);
+  color:var(--white);
+  font-size:12px;
+  font-weight:500;
+  line-height:1.5;
+  padding:10px 14px;
+  border-radius:8px;
+  white-space:normal;
+  width:240px;
+  text-align:left;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 0.2s, visibility 0.2s;
+  pointer-events:none;
+  z-index:50;
+  box-shadow:var(--shadow-lg);
+}
+.j-separator .j-tooltip::after {
+  content:'';
+  position:absolute;
+  bottom:100%;
+  left:50%;
+  transform:translateX(-50%);
+  border:6px solid transparent;
+  border-bottom-color:var(--grey-900);
+}
+.j-separator:hover .j-tooltip { opacity:1; visibility:visible; }.j-node.active-node { transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+.j-node.inviter.active-node { border-color:var(--blue); background:#DBEAFE; }
+.j-node.invitee.active-node { border-color:var(--purple); background:#EDE9FE; }
+.j-node.flagged.active-node { border-color:var(--red); background:#FEE2E2; }
+.j-node.winner.active-node { border-color:var(--green); background:#D1FAE5; }
+.j-node.connected { opacity:1; }
+.j-node.dimmed { opacity:0.35; transform:scale(0.97); }
+.j-node .j-seq-label { display:none; font-size:9px; font-weight:700; color:var(--grey-400); margin-top:4px; text-transform:uppercase; letter-spacing:0.5px; }
+.j-node.connected .j-seq-label, .j-node.active-node .j-seq-label { display:block; }
+.j-node.inviter.connected .j-seq-label { color:var(--blue); }
+.j-node.invitee.connected .j-seq-label { color:var(--purple); }
+
+/* EMAIL CARD */
+.email-card { background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--grey-200); box-shadow:var(--shadow-sm); margin-bottom:24px; overflow:hidden; transition:box-shadow 0.2s; scroll-margin-top:80px; }
+.email-card:hover { box-shadow:var(--shadow-md); }
+
+.email-header { padding:20px 28px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid transparent; cursor:pointer; user-select:none; transition:border-color 0.2s; }
+.email-card.expanded .email-header { border-bottom-color:var(--grey-100); }
+.email-header-left { display:flex; align-items:center; gap:12px; }
+.email-toggle { width:28px; height:28px; border-radius:6px; background:var(--grey-100); display:flex; align-items:center; justify-content:center; color:var(--grey-500); font-size:12px; transition:all 0.3s; flex-shrink:0; }
+.email-card.expanded .email-toggle { background:#CC1042; color:var(--white); }
+.email-card.expanded .email-toggle svg { transform:rotate(180deg); }
+.email-card .email-collapsible { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+.email-card.expanded .email-collapsible { max-height:5000px; }
+
+/* Expand hint */
+.expand-hint { font-size:11px; color:var(--grey-400); margin-left:8px; font-weight:500; font-style:italic; transition:opacity 0.3s; }
+.email-card.expanded .expand-hint { opacity:0; pointer-events:none; }
+.email-header-left { display:flex; align-items:center; gap:12px; }
+.email-num { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--white); }
+.email-num.inviter { background:var(--blue); }
+.email-num.invitee { background:var(--purple); }
+.email-num.flagged { background:var(--red); }
+.email-meta h2 { font-size:15px; font-weight:700; color:var(--dark); }
+.email-meta .trigger { font-size:12px; color:var(--grey-500); }
+.trigger-tip { cursor:help; font-size:14px; margin-left:4px; opacity:0.7; transition:opacity 0.2s; }
+.trigger-tip:hover { opacity:1; }
+.type-badge { padding:4px 10px; border-radius:6px; font-size:11px; font-weight:600; }
+
+/* LANG TABS */
+.lang-tabs { display:flex; gap:0; border-bottom:1px solid var(--grey-200); background:var(--grey-50); }
+.lang-tab { flex:1; padding:10px 20px; font-size:12px; font-weight:600; color:var(--grey-500); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.2s; background:transparent; border-top:none; border-left:none; border-right:none; font-family:var(--font); text-align:center; }
+.lang-tab.active { color:var(--blue); border-bottom-color:var(--blue); background:var(--white); }
+.lang-tab:hover { color:var(--dark); }
+.lang-content { display:none; }
+.lang-content.active { display:block; }
+
+/* EMAIL BODY */
+.email-body { padding:24px 28px; }
+.field { margin-bottom:16px; }
+.field-row { display:flex; align-items:flex-start; gap:12px; }
+.field-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--grey-400); min-width:110px; padding-top:4px; flex-shrink:0; }
+.field-value { font-size:14px; color:var(--dark); line-height:1.6; flex:1; word-break:break-word; }
+.field-value.subject { font-weight:700; font-size:15px; }
+
+.copy-btn { background:none; border:1px solid var(--grey-200); border-radius:6px; padding:4px 8px; font-size:11px; color:var(--grey-500); cursor:pointer; transition:all 0.2s; font-family:var(--font); display:inline-flex; align-items:center; gap:4px; flex-shrink:0; }
+.copy-btn:hover { background:var(--grey-100); color:var(--dark); border-color:var(--grey-300); }
+.copy-btn.copied { background:var(--green-light); color:var(--green); border-color:var(--green); }
+
+/* EMAIL PREVIEW */
+.email-preview { background:var(--grey-50); border:1px solid var(--grey-200); border-radius:var(--radius); padding:24px 28px; margin:16px 0; }
+.email-preview .banner { font-size:18px; font-weight:800; color:var(--dark); margin-bottom:16px; padding-bottom:16px; border-bottom:1px solid var(--grey-200); }
+.email-preview .salutation { font-size:14px; color:var(--grey-600); margin-bottom:12px; }
+.email-preview .content-block { font-size:14px; color:var(--grey-700); line-height:1.7; margin-bottom:16px; white-space:pre-line; }
+.email-preview .cta-block { display:inline-block; padding:10px 24px; background:var(--blue); color:var(--white); border-radius:8px; font-size:13px; font-weight:700; text-decoration:none; margin:8px 0; }
+.email-preview .cta-link { font-size:13px; color:var(--blue); margin:12px 0; padding:10px 16px; background:var(--blue-light); border-radius:8px; font-family:'SF Mono',Consolas,monospace; word-break:break-all; }
+.email-preview .cta-link a { color:var(--blue); text-decoration:none; }
+.email-preview .cta-link a:hover { text-decoration:underline; }
+.email-preview .disclaimer { font-size:11px; color:var(--grey-400); margin-top:16px; padding-top:12px; border-top:1px solid var(--grey-200); }
+
+/* Content row with copy button */
+.content-row { display:flex; align-items:flex-start; gap:8px; margin-bottom:12px; }
+.content-row .copy-btn { margin-top:2px; flex-shrink:0; opacity:0; transition:opacity 0.2s; }
+.content-row:hover .copy-btn { opacity:1; }
+.content-row .banner, .content-row .salutation, .content-row .content-block, .content-row .cta-block { flex:1; }
+
+/* CTA URL REGION BOX */
+.url-region { margin-top:20px; padding:16px 20px; background:var(--grey-50); border-radius:var(--radius); border:1px solid var(--grey-200); }
+.url-region-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--grey-400); margin-bottom:10px; }
+.url-row { display:flex; align-items:center; gap:10px; padding:6px 0; font-size:13px; }
+.url-flag { font-size:16px; width:24px; text-align:center; }
+.url-region-name { font-weight:600; color:var(--dark); min-width:28px; }
+.url-link { color:var(--blue); font-family:'SF Mono',Consolas,monospace; font-size:12px; word-break:break-all; }
+.url-status { font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; }
+.url-status.active { background:var(--green-light); color:var(--green); }
+.url-status.tbd { background:var(--amber-light); color:var(--amber); }
+
+/* COPY ALL */
+.copy-all { display:flex; justify-content:flex-start; padding:0; border-top:1px solid var(--grey-100); }
+.copy-all-btn { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:14px 16px; flex:1; font-size:12px; font-weight:600; color:var(--grey-600); background:var(--grey-50); border:none; border-right:1px solid var(--grey-200); cursor:pointer; transition:all 0.2s; font-family:var(--font); text-decoration:none; }
+.copy-all-btn:last-child { border-right:none; }
+.copy-all-btn:hover { background:var(--grey-100); color:var(--dark); }
+
+/* DOMAIN REFERENCE */
+.domain-ref { background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--grey-200); box-shadow:var(--shadow-sm); padding:28px 32px; margin-top:40px; }
+.domain-ref h3 { font-size:15px; font-weight:700; color:var(--dark); margin-bottom:4px; }
+.domain-ref .subtitle { font-size:12px; color:var(--grey-500); margin-bottom:20px; }
+.domain-table { width:100%; border-collapse:collapse; }
+.domain-table th { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--grey-400); text-align:left; padding:8px 12px; border-bottom:2px solid var(--grey-200); }
+.domain-table td { font-size:13px; padding:10px 12px; border-bottom:1px solid var(--grey-100); color:var(--grey-700); }
+.domain-table .main-domain { background:var(--green-light); font-weight:600; color:var(--green); border-radius:4px; }
+.domain-table code { font-family:'SF Mono',Consolas,monospace; font-size:12px; color:var(--blue); }
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .header { padding:16px 20px; }
+  .main { padding:20px 16px 60px; }
+  .email-body { padding:16px 20px; }
+  .email-header { padding:16px 20px; flex-direction:column; align-items:flex-start; gap:8px; }
+  .field-row { flex-direction:column; gap:4px; }
+  .field-label { min-width:auto; }
+  .journey-flow { gap:8px; }
+  .journey-row { flex-wrap:wrap; gap:8px; }
+  .journey-row .j-node { flex:1 1 45%; min-width:0; }
+  .j-separator { display:none; }
+  .url-row { flex-wrap:wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <h1>Q2 2026 Refer-A-Friend — EDM Content Hub (v2)</h1>
+      <p>Campaign: 01 April – 30 June 2026 (MT4/MT5 Time) · T&C: VFSC 40356 · 7 Emails · IB Pitch removed per compliance</p>
+    </div>
+    <div class="header-right">
+      <span class="header-badge badge-inviter">● Inviter</span>
+      <span class="header-badge badge-invitee">● Invitee</span>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- JOURNEY FLOW -->
+<div class="journey">
+  <div class="journey-title">Drip Journey Flow</div>
+  <div class="journey-flow">
+    <div class="journey-row">
+      <a href="#email-1" class="j-node inviter" data-seq="inviter" onclick="highlightSeq(event, this)"><div class="j-tooltip tip-bottom">Sent to inviters who have referred their 1st friend. Encourages them to keep referring for more rewards.</div><div class="j-num">1</div><div class="j-name">Inviter</div><div class="j-trigger">1 Invitee</div><div class="j-seq-label">Inviter Flow</div></a>
+      <div class="j-separator"><div class="sep-line"></div><div class="j-tooltip">These are two separate flows. Inviter email (1) is sent to the referrer. Invitee emails (2–7) are sent to the referred friend. They do not connect — each person receives their own journey.</div></div>
+      <a href="#email-2" class="j-node invitee has-arrow-right" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip tip-bottom">Sent to invitees who haven't opened a Trading Account yet. Nudges them to complete sign-up and deposit.</div><div class="j-num">2</div><div class="j-name">S1 — Sign Up</div><div class="j-trigger">TA not opened</div><div class="j-seq-label">Invitee Flow</div></a>
+      <a href="#email-3" class="j-node invitee has-arrow-down" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip tip-bottom">Sent to invitees who haven't opened a TA. Encourages them to also become an inviter — "double the role, double the rewards."</div><div class="j-num">3</div><div class="j-name">S1(a) — Dual Role</div><div class="j-trigger">TA not opened</div><div class="j-seq-label">Invitee Flow</div></a>
+    </div>
+    <div class="journey-row">
+      <a href="#email-4" class="j-node invitee has-arrow-right" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">Sent 3 days after invite. First deposit reminder — 87 days remaining to complete tasks and claim $50.</div><div class="j-num">4</div><div class="j-name">S2 — Countdown 1</div><div class="j-trigger">+3 days</div><div class="j-seq-label">Invitee Flow</div></a>
+      <a href="#email-5" class="j-node invitee has-arrow-right" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">Sent 30 days after invite. Urgency builds — 60 days left to deposit $100 and trade 1 lot.</div><div class="j-num">5</div><div class="j-name">S2 — Countdown 2</div><div class="j-trigger">+30 days</div><div class="j-seq-label">Invitee Flow</div></a>
+      <a href="#email-6" class="j-node invitee has-arrow-right" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">Sent 87 days after invite. Final push — only 3 days left! Last chance to complete tasks before expiry.</div><div class="j-num">6</div><div class="j-name">S2 — Countdown 3</div><div class="j-trigger">+87 days (final)</div><div class="j-seq-label">Invitee Flow</div></a>
+      <a href="#email-7" class="j-node invitee winner" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">🎉 Sent when invitee completes all tasks (deposit $100 + trade 1 lot). Congratulates and guides them to claim their $50 reward.</div><div class="j-num">7</div><div class="j-name">S3 — Winner 🎉</div><div class="j-trigger">Tasks complete</div><div class="j-seq-label">Invitee Flow</div></a>
+    </div>
+  </div>
+</div>
+
+<!-- TRIGGER FLOW VISUAL -->
+<style>
+.tf-card { background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--grey-200); box-shadow:var(--shadow-sm); margin-bottom:32px; overflow:hidden; }
+.tf-header { padding:20px 28px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; border-bottom:1px solid transparent; transition:border-color 0.2s; }
+.tf-card.expanded .tf-header { border-bottom-color:var(--grey-100); }
+.tf-body { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+.tf-card.expanded .tf-body { max-height:5000px; }
+.tf-card.expanded .email-toggle { background:#CC1042; color:white; }
+.tf-card.expanded .email-toggle svg { transform:rotate(180deg); }
+.tf-card.expanded .expand-hint { opacity:0; pointer-events:none; }
+
+.tf-section { padding:0 28px 24px; }
+.tf-section:first-child { padding-top:24px; }
+.tf-label { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+.tf-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.tf-label-text { font-size:11px; font-weight:700; color:var(--grey-400); text-transform:uppercase; letter-spacing:1px; }
+.tf-line { flex:1; height:1px; background:var(--grey-200); }
+
+.tf-grid { display:grid; gap:12px; }
+.tf-grid-2 { grid-template-columns:1fr 1fr; }
+.tf-grid-3 { grid-template-columns:1fr 1fr 1fr; }
+
+.tf-item { border-radius:12px; padding:0; overflow:hidden; background:var(--white); border:1px solid var(--grey-200); transition:box-shadow 0.2s; }
+.tf-item:hover { box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.tf-item-top { padding:14px 18px; display:flex; align-items:center; gap:10px; }
+.tf-num { width:28px; height:28px; border-radius:50%; color:white; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.tf-name { font-size:13px; font-weight:700; color:var(--dark); }
+.tf-props { padding:0 18px 14px; display:flex; flex-direction:column; gap:6px; }
+.tf-prop { display:flex; align-items:flex-start; gap:8px; font-size:11.5px; line-height:1.4; }
+.tf-prop-key { font-weight:700; white-space:nowrap; min-width:52px; }
+.tf-prop-val { color:var(--grey-600); }
+
+.tf-stage { margin-bottom:20px; }
+.tf-stage:last-child { margin-bottom:0; }
+.tf-stage-label { font-size:10px; font-weight:600; color:var(--grey-400); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:10px; padding-left:4px; }
+.tf-stage-bar { width:3px; border-radius:2px; position:absolute; left:0; top:0; bottom:0; }
+
+.tf-countdown-badge { display:inline-flex; align-items:center; gap:4px; padding:3px 8px; border-radius:4px; font-size:10px; font-weight:700; margin-top:6px; }
+
+.tf-footer { margin:0 28px 24px; padding:16px 20px; border-radius:10px; background:linear-gradient(135deg,#f8f9fb,#f1f3f8); border:1px solid var(--grey-200); }
+.tf-footer-title { font-size:12px; font-weight:700; color:var(--dark); margin-bottom:10px; }
+.tf-footer-list { display:grid; grid-template-columns:1fr 1fr; gap:4px 24px; }
+.tf-footer-item { font-size:11px; color:var(--grey-500); line-height:1.6; padding-left:12px; position:relative; }
+.tf-footer-item::before { content:''; position:absolute; left:0; top:7px; width:4px; height:4px; border-radius:50%; background:var(--grey-400); }
+</style>
+
+<div id="trigger-flow" class="tf-card">
+  <div class="tf-header" onclick="document.getElementById('trigger-flow').classList.toggle('expanded')">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0a1628,#1e3a5f);display:flex;align-items:center;justify-content:center;font-size:16px;">⚙️</div>
+      <div>
+        <h2 style="font-size:16px;font-weight:700;color:var(--dark);margin:0;">Trigger Flow & Properties</h2>
+        <div style="font-size:12px;color:var(--grey-500);margin-top:2px;">Platform setup reference — trigger conditions for all 7 emails</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="expand-hint">Click to expand</span>
+      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </div>
+  </div>
+  <div class="tf-body">
+
+    <!-- INVITER FLOW -->
+    <div class="tf-section" style="padding-top:24px;">
+      <div class="tf-label">
+        <div class="tf-dot" style="background:var(--blue);"></div>
+        <span class="tf-label-text">Inviter Flow</span>
+        <div class="tf-line"></div>
+      </div>
+      <div class="tf-grid" style="max-width:49%;">
+        <div class="tf-item" style="border-top:3px solid var(--blue);">
+          <div class="tf-item-top">
+            <div class="tf-num" style="background:var(--blue);">1</div>
+            <div class="tf-name">Inviter — 1 Invitee</div>
+          </div>
+          <div class="tf-props">
+            <div class="tf-prop"><span class="tf-prop-key" style="color:var(--blue);">Trigger</span><span class="tf-prop-val">Invitee count = 1</span></div>
+            <div class="tf-prop"><span class="tf-prop-key" style="color:var(--blue);">Target</span><span class="tf-prop-val">Newbie inviter — encourage more referrals</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVITEE FLOW -->
+    <div class="tf-section">
+      <div class="tf-label">
+        <div class="tf-dot" style="background:#CC1042;"></div>
+        <span class="tf-label-text">Invitee Flow</span>
+        <div class="tf-line"></div>
+      </div>
+
+      <!-- Stage 1 -->
+      <div class="tf-stage">
+        <div class="tf-stage-label">Stage 1 — Sign Up</div>
+        <div class="tf-grid tf-grid-2">
+          <div class="tf-item" style="border-top:3px solid #CC1042;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#CC1042;">2</div>
+              <div class="tf-name">S1 — Sign Up Nudge</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#CC1042;">Trigger</span><span class="tf-prop-val">Beginner task status = TA not opened</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#CC1042;">Target</span><span class="tf-prop-val">Invitee hasn't opened Trading Account</span></div>
+            </div>
+          </div>
+          <div class="tf-item" style="border-top:3px solid #CC1042;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#CC1042;">3</div>
+              <div class="tf-name">S1(a) — Dual Role</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#CC1042;">Trigger</span><span class="tf-prop-val">Beginner task status = TA not opened</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#CC1042;">Target</span><span class="tf-prop-val">Encourage invitee to also become inviter</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="tf-stage">
+        <div class="tf-stage-label">Stage 2 — 90-Day Countdown</div>
+        <div class="tf-grid tf-grid-3">
+          <div class="tf-item" style="border-top:3px solid #e8833a;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#e8833a;">4</div>
+              <div class="tf-name">Countdown 1</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#e8833a;">Timing</span><span class="tf-prop-val">Invitation + 3 days</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#e8833a;">Trigger</span><span class="tf-prop-val">Deposit/trading not met + FTD = $0</span></div>
+              <div class="tf-countdown-badge" style="background:#fef3c7;color:#92400e;">87 days remaining</div>
+            </div>
+          </div>
+          <div class="tf-item" style="border-top:3px solid #e8833a;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#e8833a;">5</div>
+              <div class="tf-name">Countdown 2</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#e8833a;">Timing</span><span class="tf-prop-val">Invitation + 30 days</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#e8833a;">Trigger</span><span class="tf-prop-val">Deposit/trading not met + FTD = $0</span></div>
+              <div class="tf-countdown-badge" style="background:#fef3c7;color:#92400e;">60 days remaining</div>
+            </div>
+          </div>
+          <div class="tf-item" style="border-top:3px solid #d32f2f;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#d32f2f;">6</div>
+              <div class="tf-name">Countdown 3</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#d32f2f;">Timing</span><span class="tf-prop-val">Invitation + 87 days</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#d32f2f;">Trigger</span><span class="tf-prop-val">Deposit/trading not met + FTD = $0</span></div>
+              <div class="tf-countdown-badge" style="background:#fee2e2;color:#991b1b;">⚠ 3 days remaining — FINAL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="tf-stage">
+        <div class="tf-stage-label">Stage 3 — Reward Claim</div>
+        <div class="tf-grid" style="max-width:49%;">
+          <div class="tf-item" style="border-top:3px solid var(--green);">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:var(--green);">7</div>
+              <div class="tf-name">S3 — Winner 🎉</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:var(--green);">Trigger</span><span class="tf-prop-val">All tasks completed (deposit ≥ $100 + trade ≥ 1 lot)</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:var(--green);">Action</span><span class="tf-prop-val">Eligible to claim $50 reward</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PROPERTIES SUMMARY -->
+    <div class="tf-footer">
+      <div class="tf-footer-title">📋 Key Properties for Platform Setup</div>
+      <div class="tf-footer-list">
+        <div class="tf-footer-item">Invitee count (Inviter flow trigger)</div>
+        <div class="tf-footer-item">First Time Deposit amount — $0 vs >$0</div>
+        <div class="tf-footer-item">Beginner task status — TA opened / not opened</div>
+        <div class="tf-footer-item">Invitation Time — days since invite (+3, +30, +87)</div>
+        <div class="tf-footer-item">Deposit/trading requirements — met / not met</div>
+        <div class="tf-footer-item">Task completion status — all done (for Winner)</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EMAIL 1: INVITER 1 INVITEE -->
+<div id="email-1" class="email-card">
+  <div class="email-header" onclick="toggleCard(this)">
+    <div class="email-header-left">
+      <div class="email-num inviter">1</div>
+      <div class="email-meta"><h2>Inviter — 1 Invitee</h2><div class="trigger">Trigger: Newbie inviter, invitee count = 1</div><div class="trigger" style="margin-top:2px;">Sent to inviters who have referred their 1st friend. Encourages them to keep referring for more rewards.</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="type-badge badge-inviter">Inviter</span>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </div>
+  </div>
+  <div class="email-collapsible">
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang(this,'email1','en')">EN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email1','id')">ID</button>
+    <button class="lang-tab" onclick="switchLang(this,'email1','vn')">VN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email1','th')">TH</button>
+    <button class="lang-tab" onclick="switchLang(this,'email1','ko')">KO</button>
+  </div>
+  <div id="email1-en" class="lang-content active">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Refer More Friends, Unlock Your Rewards!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Refer more friends now to claim your rewards</span></div></div>
+      <div class="email-preview" id="email1-en-content">
+        <div class="banner">Turn Your Network Into Rewards.</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Congratulations on starting your journey with the TMGM Refer-a-Friend Program! You've taken the first step—now it's time to take it to the next level. The more friends you refer, the more rewards you can unlock. Earn $50 for yourself and $50 for each friend who successfully joins.</div>
+        <div class="content-block">Here are some easy ways to help you invite more friends and get the most out of your rewards:
+
+Make it simple!
+Use your personal referral link or QR code to invite friends directly.
+
+Stay connected
+Check your Refer-a-Friend dashboard to see who's joined. Remind your friends to complete their account registration within 90 days so you both secure your rewards.*</div>
+        <div class="cta-link">Grab your referral link: <a href="https://portal.tmgm-asia.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-asia.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">Here's why it's worth sharing
+
+✅ No limit. Invite as many friends as you like
+✅ Withdraw your cash rewards whenever you want
+✅ Or boost your trading with your rewards
+
+T&Cs apply</div>
+        <div class="cta-link">Grab your referral link: <a href="https://portal.tmgm-asia.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-asia.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/bd6c81141b0bcc382c8f839c1065874740ba3812/Inviter%201-5%20invitees_EN.png','Inviter 1-5 Invitees — EN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email1-id" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Ajak Lebih Banyak Teman, Buka Hadiah Anda!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Ajak lebih banyak teman sekarang untuk mengklaim hadiah Anda.</span></div></div>
+      <div class="email-preview" id="email1-id-content">
+        <div class="banner">Ubah Jaringan Anda Menjadi Hadiah.</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Selamat memulai perjalanan Anda dengan Program TMGM Refer-a-Friend! Anda telah mengambil langkah pertama — sekarang saatnya naik ke level berikutnya. Semakin banyak teman yang Anda ajak, semakin banyak hadiah yang bisa Anda buka. Dapatkan $50 untuk diri Anda sendiri dan $50 untuk setiap teman yang berhasil bergabung.</div>
+        <div class="content-block">Berikut beberapa cara mudah untuk membantu Anda mengundang lebih banyak teman dan memaksimalkan hadiah Anda:
+
+Buat menjadi sederhana!
+Gunakan tautan referensi pribadi atau kode QR Anda untuk mengundang teman secara langsung.
+
+Tetap terhubung
+Periksa dashboard Refer-a-Friend Anda untuk melihat siapa yang sudah bergabung.
+Ingatkan teman Anda untuk menyelesaikan pendaftaran akun dalam 90 hari agar Anda berdua mendapatkan hadiah.*</div>
+        <div class="cta-link">Ambil tautan referensi Anda: <a href="https://portal.tmgm-tmc.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-tmc.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">Berikut alasan mengapa ini layak untuk dibagikan
+
+✅ Tanpa batas. Ajak sebanyak mungkin teman yang Anda mau
+✅ Tarik hadiah tunai Anda kapan saja
+✅ Atau tingkatkan trading Anda dengan hadiah tersebut
+
+S&K berlaku</div>
+        <div class="cta-link">Ambil tautan referensi Anda: <a href="https://portal.tmgm-tmc.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-tmc.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/4eb34bf75659bcf1e2266830330c6b876c127117/no1Inviter-1invitees_ID.png','Inviter 1 Invitee — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email1-vn" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Giới thiệu thêm bạn bè, mở khóa thêm phần thưởng!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Giới thiệu thêm bạn bè ngay để nhận thưởng</span></div></div>
+      <div class="email-preview" id="email1-vn-content">
+        <div class="banner">Biến mạng lưới của bạn thành phần thưởng</div>
+        <div class="salutation">Kính gửi [Tên],</div>
+        <div class="content-block">Chúc mừng bạn đã bắt đầu hành trình cùng Chương trình Giới thiệu Bạn bè của TMGM! Bạn đã đi bước đầu tiên — giờ là lúc nâng lên tầm cao mới. Càng giới thiệu nhiều bạn bè, bạn càng mở khóa được nhiều phần thưởng hơn. Nhận $50 cho bạn và $50 cho mỗi người bạn đăng ký thành công.</div>
+        <div class="content-block">Một vài cách đơn giản để mời thêm bạn bè và tối đa hóa phần thưởng của bạn:
+
+Hãy làm thật đơn giản!
+Sử dụng liên kết giới thiệu cá nhân hoặc mã QR của bạn để mời bạn bè trực tiếp.
+
+Luôn theo dõi
+Kiểm tra bảng điều khiển Giới thiệu Bạn bè để xem ai đã tham gia. Nhắc bạn bè hoàn tất đăng ký tài khoản trong vòng 90 ngày để cả hai cùng nhận thưởng.*</div>
+        <div class="cta-link">Nhận liên kết giới thiệu của bạn: <a href="https://portal.tmgmprogo.com/refer-friends/invite-friends" target="_blank">https://portal.tmgmprogo.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">Vì sao bạn nên chia sẻ?
+
+✅ Không giới hạn – Mời bao nhiêu bạn tùy thích
+✅ Rút tiền thưởng bất cứ khi nào bạn muốn
+✅ Hoặc tăng sức mạnh giao dịch với phần thưởng của bạn
+
+Áp dụng Điều khoản & Điều kiện</div>
+        <div class="cta-link">Nhận liên kết giới thiệu của bạn: <a href="https://portal.tmgmprogo.com/refer-friends/invite-friends" target="_blank">https://portal.tmgmprogo.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/4eb34bf75659bcf1e2266830330c6b876c127117/no1Inviter-1invitees_vn.png','Inviter 1 Invitee — VN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email1-th" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">ชวนเพื่อนเพิ่ม ปลดล็อกรางวัลเพิ่ม!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">ชวนเพื่อนเพิ่มตอนนี้เพื่อรับรางวัล</span></div></div>
+      <div class="email-preview" id="email1-th-content">
+        <div class="banner">เปลี่ยนเครือข่ายของคุณให้เป็นรางวัล</div>
+        <div class="salutation">เรียน [ชื่อ],</div>
+        <div class="content-block">ขอแสดงความยินดีที่คุณได้เริ่มต้นกับโปรแกรม Refer-a-Friend ของ TMGM! คุณได้ก้าวแรกแล้ว — ถึงเวลายกระดับให้มากขึ้น ยิ่งคุณชวนเพื่อนมากเท่าไร ยิ่งปลดล็อกรางวัลได้มากขึ้น รับ $50 สำหรับคุณ และ $50 สำหรับเพื่อนแต่ละคนที่สมัครสำเร็จ</div>
+        <div class="content-block">วิธีง่าย ๆ ในการชวนเพื่อนและรับรางวัลให้คุ้มที่สุด:
+
+ทำให้ง่ายเข้าไว้!
+ใช้ลิงก์แนะนำส่วนตัวหรือ QR Code ของคุณเพื่อเชิญเพื่อนโดยตรง
+
+ติดตามอยู่เสมอ
+ตรวจสอบแดชบอร์ด Refer-a-Friend เพื่อดูว่าใครสมัครแล้ว และอย่าลืมเตือนเพื่อนให้ลงทะเบียนบัญชีให้เสร็จภายใน 90 วัน เพื่อให้ทั้งสองฝ่ายได้รับรางวัล*</div>
+        <div class="cta-link">รับลิงก์แนะนำของคุณ: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">ทำไมควรแชร์?
+
+✅ ไม่จำกัดจำนวน ชวนได้ไม่อั้น
+✅ ถอนเงินรางวัลได้ทุกเมื่อ
+✅ หรือเพิ่มพลังการเทรดด้วยรางวัลของคุณ
+
+เป็นไปตามข้อกำหนดและเงื่อนไข</div>
+        <div class="cta-link">รับลิงก์แนะนำของคุณ: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/4eb34bf75659bcf1e2266830330c6b876c127117/no1Inviter-1invitees_TH.png','Inviter 1 Invitee — TH');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email1-ko" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">더 많은 친구를 초대하고 더 많은 보상을 잠금 해제하세요!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">지금 더 많은 친구를 초대하고 보상을 받으세요</span></div></div>
+      <div class="email-preview" id="email1-ko-content">
+        <div class="banner">당신의 네트워크를 보상으로 바꾸세요</div>
+        <div class="salutation">[이름] 님께,</div>
+        <div class="content-block">TMGM 추천인 프로그램을 시작하신 것을 축하드립니다! 첫 걸음을 내디디셨습니다 — 이제 한 단계 더 나아갈 시간입니다. 더 많은 친구를 초대할수록 더 많은 보상을 받을 수 있습니다. 성공적으로 가입한 친구 한 명당 $50, 그리고 본인에게도 $50가 지급됩니다.</div>
+        <div class="content-block">더 많은 친구를 초대하고 보상을 최대화하는 방법:
+
+간단하게 시작하세요!
+개인 추천 링크 또는 QR 코드를 사용하여 친구를 직접 초대하세요.
+
+지속적으로 확인하세요
+추천인 대시보드에서 가입 현황을 확인하세요. 친구가 90일 이내에 계정 등록을 완료하도록 안내하여 두 분 모두 보상을 확보하세요.*</div>
+        <div class="cta-link">추천 링크 받기: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">왜 공유해야 할까요?
+
+✅ 제한 없음 – 원하는 만큼 초대 가능
+✅ 언제든지 현금 보상 출금 가능
+✅ 또는 보상으로 거래력을 강화 가능
+
+이용약관이 적용됩니다</div>
+        <div class="cta-link">추천 링크 받기: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/4eb34bf75659bcf1e2266830330c6b876c127117/no1Inviter-1invitees_KO.png','Inviter 1 Invitee — KO');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  </div><!-- end collapsible -->
+</div>
+
+<!-- EMAIL 2: INVITEE S1 -->
+<div id="email-2" class="email-card">
+  <div class="email-header" onclick="toggleCard(this)">
+    <div class="email-header-left">
+      <div class="email-num invitee">2</div>
+      <div class="email-meta"><h2>Invitee S1 — Sign Up Nudge</h2><div class="trigger">Trigger: Trading Account not opened</div><div class="trigger" style="margin-top:2px;">Sent to invitees who haven't opened a Trading Account yet. Nudges them to complete sign-up and deposit.</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="type-badge badge-invitee">Invitee</span>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </div>
+  </div>
+  <div class="email-collapsible">
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang(this,'email2','en')">EN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email2','id')">ID</button>
+    <button class="lang-tab" onclick="switchLang(this,'email2','vn')">VN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email2','th')">TH</button>
+    <button class="lang-tab" onclick="switchLang(this,'email2','ko')">KO</button>
+  </div>
+  <div id="email2-en" class="lang-content active">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Act Fast: $50 Referral Reward Awaits!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">What are you waiting for? Refer now!</span></div></div>
+      <div class="email-preview" id="email2-en-content">
+        <div class="banner">YOUR $50 BONUS IS WAITING
+COMPLETE YOUR SIGN-UP NOW</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Congratulations on taking the first step with TMGM's Refer-a-Friend Program! 🎉
+
+You're just one step away from unlocking your reward. Simply complete your trading account sign-up and start earning up to $50 for you and $50 for your friend.</div>
+        <div class="cta-link">CONTINUE SIGN UP: <a href="https://portal.tmgm-asia.com/register" target="_blank">https://portal.tmgm-asia.com/register</a></div>
+        <div class="content-block">Your reward is only a few clicks away:
+
+Step 1: Complete Your Trading Account
+Log in to your Client Portal and finish setting up your account.
+
+Step 2: Make Your First Deposit
+Deposit a minimum of $100 (first deposit only).
+
+Step 3: Place Your First Trade
+Trade at least 1 lot to unlock your RAF reward.</div>
+        <div class="cta-link">DEPOSIT NOW: <a href="https://portal.tmgm-asia.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-asia.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Unlock Greater Trading Opportunities – Don't Miss Out!
+
+✅ No withdrawal restrictions on RAF rewards
+✅ Use your RAF bonus to amplify your trading
+
+T&Cs apply</div>
+        <div class="cta-link">EXPLORE NOW: <a href="https://portal.tmgm-asia.com/promotions/card-detail?id=234&from=PARTICIPABLE" target="_blank">https://portal.tmgm-asia.com/promotions/card-detail?id=234&from=PARTICIPABLE</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/411d8383d7e41654124072e40485ab9a22ebee81/no3invitees1-signupnudge_en.png','Invitee S1 Sign Up — EN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email2-id" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Segera Bertindak: Hadiah Referensi $50 Menanti!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Apa yang kamu tunggu? Ajak Teman Sekarang!</span></div></div>
+      <div class="email-preview" id="email2-id-content">
+        <div class="banner">BONUS $50 ANDA SEDANG MENUNGGU
+SELESAIKAN PENDAFTARAN ANDA SEKARANG</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Selamat telah mengambil langkah pertama dengan Program Refer-a-Friend TMGM! 🎉
+
+Anda hanya satu langkah lagi untuk membuka hadiah Anda. Cukup selesaikan pendaftaran akun trading Anda dan mulai dapatkan $50 untuk Anda dan $50 untuk teman Anda.</div>
+        <div class="cta-link">LANJUTKAN PENDAFTARAN: <a href="https://portal.tmgm-tmc.com/register" target="_blank">https://portal.tmgm-tmc.com/register</a></div>
+        <div class="content-block">Hadiah Anda hanya beberapa klik lagi:
+
+Langkah 1: Selesaikan Akun Trading Anda
+Login ke Portal Klien Anda dan selesaikan pengaturan akun.
+
+Langkah 2: Lakukan Deposit Pertama Anda
+Deposit minimal $100 (hanya untuk deposit pertama).
+
+Langkah 3: Lakukan Trading Pertama Anda
+Trading minimal 1 lot untuk membuka hadiah Refer-a-Friend Anda.</div>
+        <div class="cta-link">DEPOSIT SEKARANG: <a href="https://portal.tmgm-tmc.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Buka Peluang Trading Lebih Besar – Jangan Lewatkan!
+
+✅ Tidak ada batasan penarikan untuk hadiah RAF
+✅ Gunakan bonus RAF Anda untuk meningkatkan trading Anda
+
+S&K berlaku</div>
+        <div class="cta-link">JELAJAHI SEKARANG: <a href="https://portal.tmgm-tmc.com/promotions/card-detail?id=234&from=PARTICIPABLE" target="_blank">https://portal.tmgm-tmc.com/promotions/card-detail?id=234&from=PARTICIPABLE</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/411d8383d7e41654124072e40485ab9a22ebee81/no3invitees1-signupnudge_id.png','Invitee S1 Sign Up — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email2-vn" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hành động ngay: Phần thưởng giới thiệu $50 đang chờ bạn!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Bạn còn chờ gì nữa? Giới thiệu ngay!</span></div></div>
+      <div class="email-preview" id="email2-vn-content">
+        <div class="banner">TIỀN THƯỞNG $50 ĐANG CHỜ BẠN
+HOÀN TẤT ĐĂNG KÝ NGAY</div>
+        <div class="salutation">Kính gửi [Tên],</div>
+        <div class="content-block">Chúc mừng bạn đã thực hiện bước đầu tiên với Chương trình Giới thiệu Bạn bè của TMGM! 🎉
+
+Bạn chỉ còn một bước nữa để mở khóa phần thưởng. Chỉ cần hoàn tất đăng ký tài khoản giao dịch và bắt đầu nhận tới $50 cho bạn và $50 cho bạn của bạn.</div>
+        <div class="cta-link">TIẾP TỤC ĐĂNG KÝ: <a href="https://portal.tmgmprogo.com/register" target="_blank">https://portal.tmgmprogo.com/register</a></div>
+        <div class="content-block">Phần thưởng của bạn chỉ cách vài cú nhấp chuột:
+
+Bước 1: Hoàn tất Tài khoản Giao dịch
+Đăng nhập vào Cổng Khách hàng và hoàn tất thiết lập tài khoản.
+
+Bước 2: Thực hiện Khoản Nạp Đầu Tiên
+Nạp tối thiểu $100 (chỉ áp dụng cho lần nạp đầu tiên).
+
+Bước 3: Thực hiện Giao dịch Đầu Tiên
+Giao dịch ít nhất 1 lot để mở khóa thưởng RAF.</div>
+        <div class="cta-link">NẠP TIỀN NGAY: <a href="https://portal.tmgmprogo.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgmprogo.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Mở khóa thêm cơ hội giao dịch – Đừng bỏ lỡ!
+
+✅ Không giới hạn rút tiền đối với thưởng RAF
+✅ Sử dụng thưởng RAF để gia tăng sức mạnh giao dịch
+
+Áp dụng Điều khoản & Điều kiện</div>
+        <div class="cta-link">KHÁM PHÁ NGAY: <a href="https://portal.tmgmprogo.com/promotions/card-detail?id=234&from=PARTICIPABLE" target="_blank">https://portal.tmgmprogo.com/promotions/card-detail?id=234&from=PARTICIPABLE</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/411d8383d7e41654124072e40485ab9a22ebee81/no3invitees1-signupnudge_vn.png','Invitee S1 Sign Up — VN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email2-th" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">รีบเลย! รับรางวัลแนะนำ $50 ที่รอคุณอยู่</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">รออะไรอยู่? แนะนำเพื่อนเลย!</span></div></div>
+      <div class="email-preview" id="email2-th-content">
+        <div class="banner">โบนัส $50 กำลังรอคุณอยู่
+ลงทะเบียนให้เสร็จตอนนี้</div>
+        <div class="salutation">เรียน [ชื่อ],</div>
+        <div class="content-block">ขอแสดงความยินดีที่คุณได้เริ่มต้นกับโปรแกรม Refer-a-Friend ของ TMGM! 🎉
+
+คุณเหลืออีกเพียงหนึ่งขั้นตอนเพื่อปลดล็อกรางวัล เพียงลงทะเบียนบัญชีเทรดให้เสร็จ แล้วเริ่มรับสูงสุด $50 สำหรับคุณ และ $50 สำหรับเพื่อนของคุณ</div>
+        <div class="cta-link">ดำเนินการลงทะเบียนต่อ: <a href="https://portal.tmgm.com/register" target="_blank">https://portal.tmgm.com/register</a></div>
+        <div class="content-block">รางวัลของคุณอยู่แค่ไม่กี่คลิก:
+
+ขั้นตอนที่ 1: เปิดบัญชีเทรดให้เสร็จสมบูรณ์
+เข้าสู่ระบบพอร์ทัลลูกค้า และตั้งค่าบัญชีให้เรียบร้อย
+
+ขั้นตอนที่ 2: ฝากเงินครั้งแรก
+ฝากขั้นต่ำ $100 (เฉพาะการฝากครั้งแรก)
+
+ขั้นตอนที่ 3: เทรดครั้งแรก
+เทรดอย่างน้อย 1 ล็อต เพื่อปลดล็อกรางวัล RAF</div>
+        <div class="cta-link">ฝากเงินตอนนี้: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">ปลดล็อกโอกาสการเทรดที่มากขึ้น – อย่าพลาด!
+
+✅ ไม่มีข้อจำกัดในการถอนรางวัล RAF
+✅ ใช้โบนัส RAF เพื่อเพิ่มศักยภาพการเทรดของคุณ
+
+เป็นไปตามข้อกำหนดและเงื่อนไข</div>
+        <div class="cta-link">สำรวจตอนนี้: <a href="https://portal.tmgm.com/promotions/card-detail?id=234&from=PARTICIPABLE" target="_blank">https://portal.tmgm.com/promotions/card-detail?id=234&from=PARTICIPABLE</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/411d8383d7e41654124072e40485ab9a22ebee81/no3invitees1-signupnudge_th.png','Invitee S1 Sign Up — TH');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email2-ko" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">지금 바로! $50 추천 보상이 기다립니다!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">무엇을 기다리시나요? 지금 추천하세요!</span></div></div>
+      <div class="email-preview" id="email2-ko-content">
+        <div class="banner">$50 보너스가 기다리고 있습니다
+지금 가입을 완료하세요</div>
+        <div class="salutation">[이름] 님께,</div>
+        <div class="content-block">TMGM 추천인 프로그램에 첫 발을 내디디신 것을 축하드립니다! 🎉
+
+보상을 받기까지 단 한 단계만 남았습니다. 거래 계좌 개설을 완료하고, 본인과 친구 모두 최대 $50의 보상을 받아보세요.</div>
+        <div class="cta-link">가입 계속하기: <a href="https://portal.tmgm.com/register" target="_blank">https://portal.tmgm.com/register</a></div>
+        <div class="content-block">보상은 몇 번의 클릭이면 충분합니다:
+
+1단계: 거래 계좌 개설 완료
+고객 포털에 로그인하여 계좌 설정을 완료하세요.
+
+2단계: 첫 입금 진행
+최소 $100 입금 (첫 입금에 한함)
+
+3단계: 첫 거래 실행
+최소 1랏 거래 시 RAF 보상 잠금 해제</div>
+        <div class="cta-link">지금 입금하기: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">더 큰 거래 기회를 열어보세요 – 놓치지 마세요!
+
+✅ RAF 보상 출금 제한 없음
+✅ RAF 보너스로 거래 역량 강화 가능
+
+이용약관이 적용됩니다</div>
+        <div class="cta-link">지금 확인하기: <a href="https://portal.tmgm.com/promotions/card-detail?id=234&from=PARTICIPABLE" target="_blank">https://portal.tmgm.com/promotions/card-detail?id=234&from=PARTICIPABLE</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/411d8383d7e41654124072e40485ab9a22ebee81/no3invitees1-signupnudge_ko.png','Invitee S1 Sign Up — KO');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  </div><!-- end collapsible -->
+</div>
+
+<!-- EMAIL 3: INVITEE S1(a) -->
+<div id="email-3" class="email-card">
+  <div class="email-header" onclick="toggleCard(this)">
+    <div class="email-header-left">
+      <div class="email-num invitee">3</div>
+      <div class="email-meta"><h2>Invitee S1(a) — Dual Role</h2><div class="trigger">Trigger: Trading Account not opened · Encourages invitee to also refer</div><div class="trigger" style="margin-top:2px;">Sent to invitees who haven't opened a TA. Encourages them to also become an inviter — "double the role, double the rewards."</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="type-badge badge-invitee">Invitee</span>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </div>
+  </div>
+  <div class="email-collapsible">
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang(this,'email3','en')">EN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email3','id')">ID</button>
+    <button class="lang-tab" onclick="switchLang(this,'email3','vn')">VN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email3','th')">TH</button>
+    <button class="lang-tab" onclick="switchLang(this,'email3','ko')">KO</button>
+  </div>
+  <div id="email3-en" class="lang-content active">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Invite. Earn. Repeat. Grow Your Rewards with TMGM.</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Invite your friends and enjoy double rewards as invitee and inviter.</span></div></div>
+      <div class="email-preview" id="email3-en-content">
+        <div class="banner">Double the Role, Double the Rewards.</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Grow your rewards potential by inviting your friends to TMGM. When your invitees become inviters, your RAF network expands and creates more opportunities to earn.
+
+Here's what you'll enjoy with TMGM:
+• Unlimited reward potential: earn as both inviter and invitee.
+• Instant bonuses with no withdrawal restrictions.
+• Freedom to grow your trading power your way.
+
+T&Cs apply</div>
+        <div class="content-block">TMGM is now making it easier than ever to share your referral link across five platforms.
+
+Utilize our ready-made marketing materials and referral QR codes to expand your reach to more traders and continue growing your rewards.
+
+What are you waiting for? Start sharing today and watch your network grow!</div>
+        <div class="cta-link">Start Referring Today: <a href="https://portal.tmgm-asia.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-asia.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/d8d8deb3ff3183b9047aaa4db3c6cd4c74bea2e6/no4invitees1a_dualrole_en.png','Invitee S1a Dual Role — EN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email3-id" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Undang. Dapatkan. Ulangi. Tingkatkan Reward Anda bersama TMGM.</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Undang teman-teman Anda dan nikmati hadiah ganda sebagai terundang dan pengundang.</span></div></div>
+      <div class="email-preview" id="email3-id-content">
+        <div class="banner">Gandakan Peran, Gandakan Hadiah.</div>
+        <div class="salutation">Kepada [Name],</div>
+        <div class="content-block">Tingkatkan potensi reward Anda dengan mengajak teman-teman bergabung di TMGM. Saat terundang teman Anda menjadi pengundang, jaringan RAF Anda berkembang dan menciptakan lebih banyak peluang untuk mendapatkan hadiah.
+
+Yang akan Anda nikmati bersama TMGM:
+• Potensi reward tak terbatas: dapatkan sebagai inviter dan invitee.
+• Bonus instan tanpa batasan penarikan.
+• Kebebasan untuk meningkatkan kekuatan trading Anda sesuai cara Anda.
+
+Syarat & Ketentuan berlaku.</div>
+        <div class="content-block">TMGM kini membuatnya lebih mudah dari sebelumnya untuk membagikan tautan referal Anda di lima platform.
+
+Manfaatkan materi pemasaran siap pakai dan kode QR referal kami untuk memperluas jangkauan ke lebih banyak trader dan terus tingkatkan hadiah Anda.
+
+Apa lagi yang Anda tunggu? Mulai bagikan hari ini dan saksikan jaringan Anda berkembang!</div>
+        <div class="cta-link">Mulai Referal Hari Ini: <a href="https://portal.tmgm-tmc.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-tmc.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/d8d8deb3ff3183b9047aaa4db3c6cd4c74bea2e6/no4invitees1a_dualrole_id.png','Invitee S1a Dual Role — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email3-vn" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Giới thiệu. Nhận thưởng. Lặp lại. Gia tăng phần thưởng cùng TMGM.</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Mời bạn bè và tận hưởng phần thưởng kép với vai trò người mời và người được mời.</span></div></div>
+      <div class="email-preview" id="email3-vn-content">
+        <div class="banner">Gấp đôi vai trò, gấp đôi phần thưởng.</div>
+        <div class="salutation">Kính gửi [Tên],</div>
+        <div class="content-block">Gia tăng tiềm năng nhận thưởng bằng cách mời bạn bè tham gia TMGM. Khi người bạn mời tiếp tục giới thiệu người khác, mạng lưới RAF của bạn sẽ mở rộng và tạo thêm nhiều cơ hội kiếm thưởng hơn.
+
+Đây là những gì bạn sẽ nhận được cùng TMGM:
+
+• Tiềm năng thưởng không giới hạn: nhận thưởng với vai trò cả người mời và người được mời.
+• Thưởng ngay lập tức, không giới hạn rút tiền.
+• Tự do gia tăng sức mạnh giao dịch theo cách của bạn.</div>
+        <div class="content-block">Áp dụng Điều khoản & Điều kiện
+
+TMGM hiện giúp bạn chia sẻ liên kết giới thiệu dễ dàng hơn bao giờ hết trên năm nền tảng khác nhau.
+
+Tận dụng bộ tài liệu marketing có sẵn và mã QR giới thiệu để mở rộng phạm vi tiếp cận đến nhiều nhà giao dịch hơn và tiếp tục gia tăng phần thưởng của bạn.
+
+Bạn còn chờ gì nữa? Hãy bắt đầu chia sẻ ngay hôm nay và chứng kiến mạng lưới của bạn phát triển!</div>
+        <div class="cta-link">BẮT ĐẦU GIỚI THIỆU NGAY: <a href="https://portal.tmgmprogo.com/refer-friends/invite-friends" target="_blank">https://portal.tmgmprogo.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/968edae7ff68b147a153b864615b78dad32506e3/no4invitees1a_dualrole_vn.png','Invitee S1a Dual Role — VN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email3-th" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">ชวน รับ ทำซ้ำ เพิ่มรางวัลกับ TMGM</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">ชวนเพื่อนและรับรางวัลสองต่อ ทั้งในฐานะผู้ถูกเชิญและผู้แนะนำ</span></div></div>
+      <div class="email-preview" id="email3-th-content">
+        <div class="banner">สองบทบาท สองเท่ารางวัล</div>
+        <div class="salutation">เรียน [ชื่อ],</div>
+        <div class="content-block">เพิ่มศักยภาพในการรับรางวัลของคุณด้วยการชวนเพื่อนเข้าร่วม TMGM เมื่อเพื่อนของคุณกลายเป็นผู้แนะนำ เครือข่าย RAF ของคุณจะขยายตัว และสร้างโอกาสในการรับรางวัลมากขึ้น
+
+สิ่งที่คุณจะได้รับกับ TMGM:
+
+• ศักยภาพรางวัลไม่จำกัด รับได้ทั้งในฐานะผู้แนะนำและผู้ถูกเชิญ
+• โบนัสทันที ไม่มีข้อจำกัดในการถอน
+• อิสระในการเพิ่มพลังการเทรดในแบบของคุณ</div>
+        <div class="content-block">TMGM ทำให้การแชร์ลิงก์แนะนำของคุณง่ายกว่าที่เคย ผ่าน 5 แพลตฟอร์มหลัก
+
+ใช้สื่อการตลาดสำเร็จรูปและ QR Code แนะนำ เพื่อขยายการเข้าถึงไปยังนักเทรดมากขึ้น และเพิ่มรางวัลของคุณอย่างต่อเนื่อง
+
+คุณรออะไรอยู่? เริ่มแชร์วันนี้และดูเครือข่ายของคุณเติบโต!</div>
+        <div class="cta-link">เริ่มแนะนำวันนี้: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/d8d8deb3ff3183b9047aaa4db3c6cd4c74bea2e6/no4invitees1a_dualrole_th.png','Invitee S1a Dual Role — TH');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email3-ko" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">초대하고. 수익을 얻고. 반복하세요. TMGM과 함께 보상을 키우세요.</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">친구를 초대하고 초대자와 피초대자 두 역할 모두에서 보상을 받으세요.</span></div></div>
+      <div class="email-preview" id="email3-ko-content">
+        <div class="banner">두 배의 역할, 두 배의 보상</div>
+        <div class="salutation">[이름] 님께,</div>
+        <div class="content-block">친구를 TMGM에 초대하여 보상 잠재력을 키워보세요. 초대한 친구가 다시 다른 사람을 초대하게 되면, 고객님의 RAF 네트워크는 더욱 확장되고 더 많은 수익 기회가 만들어집니다.
+
+TMGM과 함께 누릴 수 있는 혜택:
+
+• 무제한 보상 잠재력 – 초대자와 피초대자 모두로 수익 가능
+• 즉시 지급 보너스, 출금 제한 없음
+• 원하는 방식으로 거래 역량을 자유롭게 강화</div>
+        <div class="content-block">이용약관이 적용됩니다
+
+TMGM은 이제 5개 플랫폼을 통해 추천 링크를 더욱 쉽게 공유할 수 있도록 지원합니다.
+
+제공되는 마케팅 자료와 추천 QR 코드를 활용하여 더 많은 트레이더에게 도달하고, 보상을 계속 확장하세요.
+
+무엇을 기다리시나요? 오늘부터 공유를 시작하고 네트워크의 성장을 확인하세요!</div>
+        <div class="cta-link">지금 추천 시작하기: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/d8d8deb3ff3183b9047aaa4db3c6cd4c74bea2e6/no4invitees1a_dualrole_ko.png','Invitee S1a Dual Role — KO');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  </div><!-- end collapsible -->
+</div>
+
+<!-- EMAIL 4: S2 EDM 1 (+3 days) -->
+<div id="email-4" class="email-card">
+  <div class="email-header" onclick="toggleCard(this)">
+    <div class="email-header-left">
+      <div class="email-num invitee">4</div>
+      <div class="email-meta"><h2>Invitee S2 — Countdown EDM 1</h2><div class="trigger">Trigger: +3 days after invite · FTD = $0</div><div class="trigger" style="margin-top:2px;">Sent 3 days after invite. First deposit reminder — 87 days remaining to complete tasks and claim $50.</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="type-badge badge-invitee">Invitee</span>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </div>
+  </div>
+  <div class="email-collapsible">
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang(this,'email4','en')">EN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email4','id')">ID</button>
+    <button class="lang-tab" onclick="switchLang(this,'email4','vn')">VN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email4','th')">TH</button>
+    <button class="lang-tab" onclick="switchLang(this,'email4','ko')">KO</button>
+  </div>
+  <div id="email4-en" class="lang-content active">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Act Fast! Unlock Your $50 Reward</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Deposit & trade now to claim your Refer-a-Friend cash bonus.</span></div></div>
+      <div class="email-preview" id="email4-en-content">
+        <div class="banner">EXCLUSIVE REWARD AWAITS: UNLOCK $50</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">You are eligible for an exclusive Refer-a-Friend reward
+
+Complete your newbie tasks within 90 days and you can unlock $50 in reward for yourself and your friend.
+
+Do not leave your bonus on the table. Claim it today.</div>
+        <div class="content-block">How to Claim Your Reward
+
+Step 1: Log In
+Access your Client Portal and complete your account setup.
+
+Step 2: Make Your First Deposit
+Deposit at least $100 to qualify.
+(This applies only to your first deposit, not cumulative deposits.)
+
+Step 3: Start Trading
+Trade at least 1 lot, and your Refer-a-Friend reward of $50 will be credited.</div>
+        <div class="cta-link">DEPOSIT NOW: <a href="https://portal.tmgm-asia.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-asia.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Here's an extra bonus for you
+
+Did you know? While you're working on your RAF trading tasks, you'll also earn points for every trade you make. These points can be redeemed for exclusive perks and rewards in our TMGM Rewards Store.
+
+T&C Apply</div>
+        <div class="cta-link">GO TO REWARDS STORE: <a href="https://portal.tmgm-asia.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm-asia.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/a73dd9dbbc923c7855784b7c6f6b15d6ced19f18/no5invitees2_countdown_edm1_en_v4.png','Invitee S2 Countdown 1 — EN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email4-id" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Segera Bertindak! Dapatkan Hadiah $50 Anda</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Deposit & trading sekarang untuk mengklaim bonus tunai Refer-a-Friend Anda.</span></div></div>
+      <div class="email-preview" id="email4-id-content">
+        <div class="banner">HADIAH EKSKLUSIF MENANTI: DAPATKAN $50</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Anda memenuhi syarat untuk hadiah eksklusif Refer-a-Friend
+
+Selesaikan tugas pemula Anda dalam 90 hari dan Anda dapat membuka $50 hadiah untuk Anda sendiri dan teman Anda.
+
+Jangan biarkan bonus Anda terlewat. Klaim hari ini.</div>
+        <div class="content-block">Cara Mengklaim Hadiah Anda
+
+Langkah 1: Login
+Akses Portal Klien Anda dan selesaikan pengaturan akun.
+
+Langkah 2: Lakukan Deposit Pertama Anda
+Deposit minimal $100 untuk memenuhi syarat.
+(Hanya berlaku untuk deposit pertama Anda, bukan deposit kumulatif.)
+
+Langkah 3: Mulai Trading
+Trading minimal 1 lot, dan hadiah Refer-a-Friend $50 akan dikreditkan.</div>
+        <div class="cta-link">DEPOSIT SEKARANG: <a href="https://portal.tmgm-tmc.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Berikut bonus tambahan untuk Anda
+
+Tahukah Anda? Saat Anda menyelesaikan tugas trading RAF, Anda juga akan mendapatkan poin untuk setiap trading yang Anda lakukan. Poin ini dapat ditukarkan dengan keuntungan dan hadiah eksklusif di TMGM Rewards Store.
+
+S&K berlaku</div>
+        <div class="cta-link">KE REWARDS STORE: <a href="https://portal.tmgm-tmc.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/3c770efb483007e7b5b0aceba46e06dbd308f5e1/no5invitees2_countdown_edm1_ID.png','Invitee S2 Countdown 1 — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email4-vn" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hành động ngay! Mở khóa phần thưởng $50 của bạn</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Nạp tiền & giao dịch ngay để nhận thưởng tiền mặt Refer-a-Friend</span></div></div>
+      <div class="email-preview" id="email4-vn-content">
+        <div class="banner">PHẦN THƯỞNG ĐỘC QUYỀN ĐANG CHỜ: MỞ KHÓA $50</div>
+        <div class="salutation">Kính gửi [Tên],</div>
+        <div class="content-block">Bạn đủ điều kiện nhận phần thưởng độc quyền từ chương trình Refer-a-Friend.
+
+Hoàn thành các nhiệm vụ dành cho người mới trong vòng 90 ngày và bạn có thể mở khóa $50 cho bạn và $50 cho bạn của bạn.
+
+Đừng bỏ lỡ khoản thưởng của mình. Nhận ngay hôm nay.</div>
+        <div class="content-block">Cách nhận thưởng của bạn
+
+Bước 1: Đăng nhập
+Truy cập Cổng Khách hàng và hoàn tất thiết lập tài khoản.
+
+Bước 2: Thực hiện khoản nạp đầu tiên
+Nạp tối thiểu $100 để đủ điều kiện.
+(Chỉ áp dụng cho lần nạp đầu tiên, không tính gộp nhiều lần nạp.)
+
+Bước 3: Bắt đầu giao dịch
+Giao dịch ít nhất 1 lot và phần thưởng $50 Refer-a-Friend sẽ được ghi có.</div>
+        <div class="cta-link">NẠP TIỀN NGAY: <a href="https://portal.tmgmprogo.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgmprogo.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Thêm một ưu đãi dành cho bạn
+
+Bạn có biết? Trong khi hoàn thành các nhiệm vụ giao dịch RAF, bạn cũng sẽ tích lũy điểm cho mỗi giao dịch thực hiện. Những điểm này có thể đổi lấy đặc quyền và quà tặng độc quyền tại TMGM Rewards Store.
+
+Áp dụng Điều khoản & Điều kiện</div>
+        <div class="cta-link">ĐẾN REWARDS STORE: <a href="https://portal.tmgmprogo.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgmprogo.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/3c770efb483007e7b5b0aceba46e06dbd308f5e1/no5invitees2_countdown_edm1_vn.png','Invitee S2 Countdown 1 — VN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email4-th" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">รีบเลย! ปลดล็อกรางวัล $50 ของคุณ</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">ฝากเงินและเทรดตอนนี้เพื่อรับโบนัสเงินสด Refer-a-Friend</span></div></div>
+      <div class="email-preview" id="email4-th-content">
+        <div class="banner">รางวัลพิเศษกำลังรอคุณอยู่: ปลดล็อก $50</div>
+        <div class="salutation">เรียน [ชื่อ],</div>
+        <div class="content-block">คุณมีสิทธิ์รับรางวัลพิเศษจากโปรแกรม Refer-a-Friend
+
+เพียงทำภารกิจสำหรับผู้เริ่มต้นให้เสร็จภายใน 90 วัน คุณจะสามารถปลดล็อก $50 สำหรับคุณ และ $50 สำหรับเพื่อนของคุณ
+
+อย่าปล่อยให้โบนัสของคุณหลุดมือ รับสิทธิ์วันนี้เลย</div>
+        <div class="content-block">วิธีรับรางวัล
+
+ขั้นตอนที่ 1: เข้าสู่ระบบ
+เข้าสู่พอร์ทัลลูกค้าและตั้งค่าบัญชีให้เสร็จสมบูรณ์
+
+ขั้นตอนที่ 2: ฝากเงินครั้งแรก
+ฝากอย่างน้อย $100 เพื่อให้มีสิทธิ์
+(ใช้ได้เฉพาะการฝากครั้งแรก ไม่ใช่ยอดฝากสะสม)
+
+ขั้นตอนที่ 3: เริ่มเทรด
+เทรดอย่างน้อย 1 ล็อต แล้วรางวัล $50 Refer-a-Friend จะถูกเครดิตให้คุณ</div>
+        <div class="cta-link">ฝากเงินตอนนี้: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">โบนัสพิเศษเพิ่มเติมสำหรับคุณ
+
+คุณทราบหรือไม่? ระหว่างที่คุณทำภารกิจ RAF คุณจะได้รับคะแนนจากทุกการเทรด คะแนนเหล่านี้สามารถนำไปแลกรับสิทธิพิเศษและของรางวัลสุดพิเศษใน TMGM Rewards Store ได้
+
+เป็นไปตามข้อกำหนดและเงื่อนไข</div>
+        <div class="cta-link">ไปที่ REWARDS STORE: <a href="https://portal.tmgm.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/3c770efb483007e7b5b0aceba46e06dbd308f5e1/no5invitees2_countdown_edm1_th.png','Invitee S2 Countdown 1 — TH');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email4-ko" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">지금 바로! $50 보상을 잠금 해제하세요</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">지금 입금하고 거래하여 Refer-a-Friend 현금 보너스를 받으세요</span></div></div>
+      <div class="email-preview" id="email4-ko-content">
+        <div class="banner">특별 보상이 기다립니다: $50 잠금 해제</div>
+        <div class="salutation">[이름] 님께,</div>
+        <div class="content-block">고객님은 Refer-a-Friend 특별 보상 대상입니다.
+
+90일 이내에 신규 사용자 미션을 완료하면, 본인과 친구 모두에게 $50 보상을 받을 수 있습니다.
+
+보너스를 놓치지 마세요. 오늘 바로 받으세요.</div>
+        <div class="content-block">보상 수령 방법
+
+1단계: 로그인
+고객 포털에 접속하여 계좌 설정을 완료하세요.
+
+2단계: 첫 입금 진행
+최소 $100을 입금해야 자격이 충족됩니다.
+(첫 입금에만 적용되며, 누적 입금은 해당되지 않습니다.)
+
+3단계: 거래 시작
+최소 1랏 거래 시 $50 Refer-a-Friend 보상이 지급됩니다.</div>
+        <div class="cta-link">지금 입금하기: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">추가 보너스 안내
+
+알고 계셨나요? RAF 거래 미션을 수행하는 동안, 모든 거래에 대해 포인트가 적립됩니다. 적립된 포인트는 TMGM Rewards Store에서 다양한 특별 혜택 및 보상으로 교환할 수 있습니다.
+
+이용약관이 적용됩니다</div>
+        <div class="cta-link">REWARDS STORE 바로가기: <a href="https://portal.tmgm.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/3c770efb483007e7b5b0aceba46e06dbd308f5e1/no5invitees2_countdown_edm1_ko.png','Invitee S2 Countdown 1 — KO');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  </div><!-- end collapsible -->
+</div>
+
+<!-- EMAIL 5: S2 EDM 2 (+30 days) -->
+<div id="email-5" class="email-card">
+  <div class="email-header" onclick="toggleCard(this)">
+    <div class="email-header-left">
+      <div class="email-num invitee">5</div>
+      <div class="email-meta"><h2>Invitee S2 — Countdown EDM 2</h2><div class="trigger">Trigger: +30 days after invite · 60 days left</div><div class="trigger" style="margin-top:2px;">Sent 30 days after invite. Urgency builds — 60 days left to deposit $100 and trade 1 lot.</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="type-badge badge-invitee">Invitee</span>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </div>
+  </div>
+  <div class="email-collapsible">
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang(this,'email5','en')">EN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email5','id')">ID</button>
+    <button class="lang-tab" onclick="switchLang(this,'email5','vn')">VN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email5','th')">TH</button>
+    <button class="lang-tab" onclick="switchLang(this,'email5','ko')">KO</button>
+  </div>
+  <div id="email5-en" class="lang-content active">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Don't Miss Out: 60 Days Left to Claim $50</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Deposit and trade now to unlock your Refer-a-Friend cash bonus</span></div></div>
+      <div class="email-preview" id="email5-en-content">
+        <div class="banner">$50 CASH BONUS
+60 DAYS LEFT TO CLAIM</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">It's been 30 days since your invite, and your Refer-a-Friend reward is still waiting.
+
+The countdown is on. You now have 60 days left to complete your newbie tasks and unlock $50 in rewards for both you and your friend.
+
+Don't let this reward slip away.</div>
+        <div class="content-block">Simple Steps to Earn Your Bonus
+
+Step 1: Log in to your Client Portal
+
+Step 2: Make your first deposit of at least $100
+(applies only to your first deposit, not cumulative deposits)
+
+Step 3: Trade at least 1 lot, and your RAF bonus will be credited</div>
+        <div class="cta-link">DEPOSIT NOW: <a href="https://portal.tmgm-asia.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-asia.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Discover TMGM Rewards
+
+Every trade you make counts for more.
+
+While completing your RAF tasks, you'll also earn points with every trade. Redeem them in the TMGM Rewards Store for exclusive perks, bonuses, and rewards.
+
+T&C Apply</div>
+        <div class="cta-link">GO TO REWARDS STORE: <a href="https://portal.tmgm-asia.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm-asia.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/da952a6d33eb12f3f6067cc0814e279deac14702/no6invitees2_countdown_edm_2_en.png','Invitee S2 Countdown 2 — EN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email5-id" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Jangan Lewatkan: 60 Hari Tersisa untuk Mengklaim $50</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Deposit dan trading sekarang untuk membuka bonus tunai Refer-a-Friend Anda</span></div></div>
+      <div class="email-preview" id="email5-id-content">
+        <div class="banner">BONUS TUNAI $50
+60 HARI TERSISA UNTUK MENGKLAIM</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Sudah 30 hari sejak undangan Anda, dan hadiah Refer-a-Friend Anda masih menunggu.
+
+Hitungan mundur dimulai. Sekarang Anda memiliki 60 hari tersisa untuk menyelesaikan tugas awal dan mendapat $50 hadiah awal untuk Anda dan teman Anda.
+
+Jangan biarkan hadiah ini terlewat.</div>
+        <div class="content-block">Langkah Mudah untuk Mendapatkan Bonus Anda
+
+Langkah 1: Login ke Portal Klien Anda
+
+Langkah 2: Lakukan deposit pertama minimal $100
+(Hanya berlaku untuk deposit pertama Anda, bukan deposit kumulatif)
+
+Langkah 3: Trading minimal 1 lot, dan bonus RAF Anda akan dikreditkan</div>
+        <div class="cta-link">DEPOSIT SEKARANG: <a href="https://portal.tmgm-tmc.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Jelajahi TMGM Rewards
+
+Setiap trading yang Anda lakukan bernilai lebih.
+
+Saat menyelesaikan tugas RAF Anda, Anda juga akan mendapatkan poin untuk setiap trading. Tukarkan poin tersebut di TMGM Rewards Store untuk keuntungan, bonus, dan hadiah eksklusif.
+
+S&K berlaku</div>
+        <div class="cta-link">KE REWARDS STORE: <a href="https://portal.tmgm-tmc.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/e40c69585c3a67c075f39e1f4e26dea5511ccdbc/no6invitees2_countdown_edm_2_ID_v2.png','Invitee S2 Countdown 2 — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email5-vn" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Đừng bỏ lỡ: Còn 60 ngày để nhận $50</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Nạp tiền và giao dịch ngay để mở khóa thưởng tiền mặt Refer-a-Friend</span></div></div>
+      <div class="email-preview" id="email5-vn-content">
+        <div class="banner">THƯỞNG TIỀN MẶT $50
+CÒN 60 NGÀY ĐỂ NHẬN</div>
+        <div class="salutation">Kính gửi [Tên],</div>
+        <div class="content-block">Đã 30 ngày kể từ khi bạn được mời và phần thưởng Refer-a-Friend của bạn vẫn đang chờ.
+
+Thời gian đang đếm ngược. Bạn còn 60 ngày để hoàn thành các nhiệm vụ dành cho người mới và mở khóa $50 cho bạn và $50 cho bạn của bạn.
+
+Đừng để phần thưởng này vụt mất.</div>
+        <div class="content-block">Các bước đơn giản để nhận thưởng
+
+Bước 1: Đăng nhập vào Cổng Khách hàng
+
+Bước 2: Thực hiện khoản nạp đầu tiên tối thiểu $100
+(Chỉ áp dụng cho lần nạp đầu tiên, không tính gộp nhiều lần nạp)
+
+Bước 3: Giao dịch ít nhất 1 lot và thưởng RAF sẽ được ghi có</div>
+        <div class="cta-link">NẠP TIỀN NGAY: <a href="https://portal.tmgmprogo.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgmprogo.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Khám phá TMGM Rewards
+
+Mỗi giao dịch bạn thực hiện đều mang lại nhiều giá trị hơn.
+
+Trong khi hoàn thành nhiệm vụ RAF, bạn cũng sẽ tích lũy điểm cho mỗi giao dịch. Đổi điểm tại TMGM Rewards Store để nhận đặc quyền, thưởng và quà tặng độc quyền.
+
+Áp dụng Điều khoản & Điều kiện</div>
+        <div class="cta-link">ĐẾN REWARDS STORE: <a href="https://portal.tmgmprogo.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgmprogo.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/da952a6d33eb12f3f6067cc0814e279deac14702/no6invitees2_countdown_edm_2_vn.png','Invitee S2 Countdown 2 — VN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email5-th" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">อย่าพลาด: เหลืออีก 60 วันเพื่อรับ $50</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">ฝากเงินและเทรดตอนนี้เพื่อปลดล็อกโบนัสเงินสด Refer-a-Friend</span></div></div>
+      <div class="email-preview" id="email5-th-content">
+        <div class="banner">โบนัสเงินสด $50
+เหลืออีก 60 วัน</div>
+        <div class="salutation">เรียน [ชื่อ],</div>
+        <div class="content-block">ผ่านมาแล้ว 30 วันนับจากวันที่คุณได้รับเชิญ และรางวัล Refer-a-Friend ของคุณยังคงรออยู่
+
+เวลานับถอยหลังเริ่มแล้ว คุณมีเวลาอีก 60 วันในการทำภารกิจผู้เริ่มต้นให้ครบ และปลดล็อก $50 สำหรับคุณและ $50 สำหรับเพื่อนของคุณ
+
+อย่าปล่อยให้รางวัลนี้หลุดมือ</div>
+        <div class="content-block">ขั้นตอนง่าย ๆ เพื่อรับโบนัส
+
+ขั้นตอนที่ 1: เข้าสู่ระบบพอร์ทัลลูกค้า
+
+ขั้นตอนที่ 2: ฝากเงินครั้งแรกอย่างน้อย $100
+(ใช้ได้เฉพาะการฝากครั้งแรก ไม่ใช่ยอดฝากสะสม)
+
+ขั้นตอนที่ 3: เทรดอย่างน้อย 1 ล็อต แล้วโบนัส RAF จะถูกเครดิตให้คุณ</div>
+        <div class="cta-link">ฝากเงินตอนนี้: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">ค้นพบ TMGM Rewards
+
+ทุกการเทรดของคุณมีคุณค่ามากกว่าเดิม
+
+ระหว่างทำภารกิจ RAF คุณจะได้รับคะแนนจากทุกการเทรด สามารถนำคะแนนไปแลกรับสิทธิพิเศษ โบนัส และของรางวัลใน TMGM Rewards Store
+
+เป็นไปตามข้อกำหนดและเงื่อนไข</div>
+        <div class="cta-link">ไปที่ REWARDS STORE: <a href="https://portal.tmgm.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/da952a6d33eb12f3f6067cc0814e279deac14702/no6invitees2_countdown_edm_2_th.png','Invitee S2 Countdown 2 — TH');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email5-ko" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">놓치지 마세요: $50 수령까지 60일 남았습니다</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">지금 입금하고 거래하여 Refer-a-Friend 현금 보너스를 받으세요</span></div></div>
+      <div class="email-preview" id="email5-ko-content">
+        <div class="banner">$50 현금 보너스
+수령까지 60일 남음</div>
+        <div class="salutation">[이름] 님께,</div>
+        <div class="content-block">초대받은 지 30일이 지났으며, Refer-a-Friend 보상이 아직 기다리고 있습니다.
+
+카운트다운이 시작되었습니다. 이제 신규 사용자 미션을 완료하고 본인과 친구 모두에게 $50 보상을 받을 수 있는 기간이 60일 남았습니다.
+
+이 기회를 놓치지 마세요.</div>
+        <div class="content-block">보너스 수령을 위한 간단한 단계
+
+1단계: 고객 포털에 로그인
+
+2단계: 첫 입금으로 최소 $100 입금
+(첫 입금에만 적용되며, 누적 입금은 해당되지 않습니다)
+
+3단계: 최소 1랏 거래 시 RAF 보너스가 지급됩니다</div>
+        <div class="cta-link">지금 입금하기: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">TMGM Rewards 알아보기
+
+모든 거래는 더 큰 가치를 제공합니다.
+
+RAF 미션을 수행하는 동안 거래할 때마다 포인트가 적립됩니다. 적립된 포인트는 TMGM Rewards Store에서 다양한 특별 혜택과 보상으로 교환할 수 있습니다.
+
+이용약관이 적용됩니다</div>
+        <div class="cta-link">REWARDS STORE 바로가기: <a href="https://portal.tmgm.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/da952a6d33eb12f3f6067cc0814e279deac14702/no6invitees2_countdown_edm_2_ko.png','Invitee S2 Countdown 2 — KO');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  </div><!-- end collapsible -->
+</div>
+
+<!-- EMAIL 6: S2 EDM 3 (+87 days) -->
+<div id="email-6" class="email-card">
+  <div class="email-header" onclick="toggleCard(this)">
+    <div class="email-header-left">
+      <div class="email-num invitee">6</div>
+      <div class="email-meta"><h2>Invitee S2 — Countdown EDM 3</h2><div class="trigger">Trigger: +87 days after invite · 3 days left · FINAL PUSH</div><div class="trigger" style="margin-top:2px;">Sent 87 days after invite. Final push — only 3 days left! Last chance to complete tasks before expiry.</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="type-badge badge-invitee">Invitee</span>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </div>
+  </div>
+  <div class="email-collapsible">
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang(this,'email6','en')">EN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email6','id')">ID</button>
+    <button class="lang-tab" onclick="switchLang(this,'email6','vn')">VN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email6','th')">TH</button>
+    <button class="lang-tab" onclick="switchLang(this,'email6','ko')">KO</button>
+  </div>
+  <div id="email6-en" class="lang-content active">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Only 3 Days Left: Claim Your $50 Reward</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">This is your last chance to complete your tasks and unlock your RAF bonus</span></div></div>
+      <div class="email-preview" id="email6-en-content">
+        <div class="banner">GET REWARDED WITH $50
+3 DAYS COUNTDOWN</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Time is almost up. You have just 3 days left to complete your newbie tasks and unlock $50 in rewards for yourself and your friend.
+
+This is your final chance to claim your reward before it expires. One last push is all it takes.</div>
+        <div class="content-block">Here's how to grab your reward before time runs out:
+
+Step 1: Log in to your Client Portal
+
+Step 2: Deposit a minimum of $100
+* Applied to first time deposit, not accumulative deposit
+
+Step 3: Trade at least 1 lot — and get your RAF reward</div>
+        <div class="cta-link">DEPOSIT NOW: <a href="https://portal.tmgm-asia.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-asia.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Go Beyond the Cash Bonus
+
+Every trade you make doesn't just bring you closer to your $50 RAF reward. It also earns you Reward Points.
+
+Redeem these points anytime in the TMGM Rewards Store for exclusive perks, trading bonuses, and premium items designed to boost your experience.
+
+T&C Apply</div>
+        <div class="cta-link">GO TO REWARDS STORE: <a href="https://portal.tmgm-asia.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm-asia.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/e8bd5928ca4ed44134a7a36227609bbf4b41cec1/no7invitees2_countdown_edm_3_en.png','Invitee S2 Countdown 3 — EN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email6-id" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hanya Tersisa 3 Hari: Klaim Hadiah $50 Anda</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Ini adalah kesempatan terakhir Anda untuk menyelesaikan tugas dan membuka bonus RAF Anda</span></div></div>
+      <div class="email-preview" id="email6-id-content">
+        <div class="banner">DAPATKAN HADIAH $50
+HITUNG MUNDUR 3 HARI</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Waktu hampir habis. Anda hanya memiliki 3 hari tersisa untuk menyelesaikan tugas pemula dan membuka $50 hadiah untuk Anda dan teman Anda.
+
+Ini adalah kesempatan terakhir Anda untuk mengklaim hadiah sebelum kadaluarsa. Satu langkah terakhir untuk mencapainya.</div>
+        <div class="content-block">Berikut cara mendapatkan hadiah Anda sebelum waktu habis:
+
+Langkah 1: Login ke Portal Klien Anda
+
+Langkah 2: Deposit minimal $100
+* Berlaku untuk deposit pertama, bukan deposit kumulatif
+
+Langkah 3: Trading minimal 1 lot – dan dapatkan hadiah RAF Anda</div>
+        <div class="cta-link">DEPOSIT SEKARANG: <a href="https://portal.tmgm-tmc.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Lebih dari Sekadar Bonus Tunai
+
+Setiap trading yang Anda lakukan tidak hanya mendekatkan Anda pada hadiah RAF $50. Anda juga akan mendapatkan Poin Reward.
+
+Tukarkan poin ini kapan saja di TMGM Rewards Store untuk keuntungan eksklusif, bonus trading, dan item premium yang dirancang untuk meningkatkan pengalaman Anda.
+
+S&K berlaku</div>
+        <div class="cta-link">KE REWARDS STORE: <a href="https://portal.tmgm-tmc.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/e8bd5928ca4ed44134a7a36227609bbf4b41cec1/no7invitees2_countdown_edm_3_ID.png','Invitee S2 Countdown 3 — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email6-vn" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Chỉ còn 3 ngày: Nhận ngay $50 của bạn</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Cơ hội cuối cùng để hoàn thành nhiệm vụ và mở khóa thưởng RAF</span></div></div>
+      <div class="email-preview" id="email6-vn-content">
+        <div class="banner">NHẬN THƯỞNG $50
+ĐẾM NGƯỢC 3 NGÀY</div>
+        <div class="salutation">Kính gửi [Tên],</div>
+        <div class="content-block">Thời gian sắp hết. Bạn chỉ còn 3 ngày để hoàn thành nhiệm vụ dành cho người mới và mở khóa $50 cho bạn và $50 cho bạn của bạn.
+
+Đây là cơ hội cuối cùng để nhận thưởng trước khi hết hạn. Chỉ cần thêm một bước nữa.</div>
+        <div class="content-block">Cách nhận thưởng trước khi hết thời gian:
+
+Bước 1: Đăng nhập vào Cổng Khách hàng
+
+Bước 2: Nạp tối thiểu $100
+Chỉ áp dụng cho lần nạp đầu tiên, không tính gộp nhiều lần nạp
+
+Bước 3: Giao dịch ít nhất 1 lot – và nhận thưởng RAF của bạn</div>
+        <div class="cta-link">NẠP TIỀN NGAY: <a href="https://portal.tmgmprogo.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgmprogo.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">Mỗi giao dịch bạn thực hiện không chỉ đưa bạn đến gần hơn với $50 RAF, mà còn giúp bạn tích lũy Điểm Thưởng.
+
+Đổi điểm bất kỳ lúc nào tại TMGM Rewards Store để nhận đặc quyền độc quyền, thưởng giao dịch và quà tặng cao cấp nhằm nâng cao trải nghiệm của bạn.
+
+Áp dụng Điều khoản & Điều kiện</div>
+        <div class="cta-link">ĐẾN REWARDS STORE: <a href="https://portal.tmgmprogo.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgmprogo.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/e8bd5928ca4ed44134a7a36227609bbf4b41cec1/no7invitees2_countdown_edm_3_vn.png','Invitee S2 Countdown 3 — VN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email6-th" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">เหลือเพียง 3 วัน: รับ $50 ของคุณตอนนี้</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">โอกาสสุดท้ายในการทำภารกิจให้ครบและปลดล็อกโบนัส RAF</span></div></div>
+      <div class="email-preview" id="email6-th-content">
+        <div class="banner">รับรางวัล $50
+นับถอยหลัง 3 วัน</div>
+        <div class="salutation">เรียน [ชื่อ],</div>
+        <div class="content-block">เวลาใกล้หมดแล้ว คุณมีเวลาเพียง 3 วันในการทำภารกิจผู้เริ่มต้นให้ครบ และปลดล็อก $50 สำหรับคุณและ $50 สำหรับเพื่อนของคุณ
+
+นี่คือโอกาสสุดท้ายก่อนรางวัลจะหมดอายุ อีกเพียงก้าวเดียวเท่านั้น</div>
+        <div class="content-block">วิธีรับรางวัลก่อนหมดเวลา:
+
+ขั้นตอนที่ 1: เข้าสู่ระบบพอร์ทัลลูกค้า
+
+ขั้นตอนที่ 2: ฝากขั้นต่ำ $100
+ใช้ได้เฉพาะการฝากครั้งแรก ไม่ใช่ยอดฝากสะสม
+
+ขั้นตอนที่ 3: เทรดอย่างน้อย 1 ล็อต และรับรางวัล RAF ของคุณ</div>
+        <div class="cta-link">ฝากเงินตอนนี้: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">ทุกการเทรดไม่เพียงช่วยให้คุณเข้าใกล้ $50 RAF มากขึ้น แต่ยังช่วยให้คุณสะสมคะแนนรางวัล
+
+นำคะแนนไปแลกรับสิทธิพิเศษ โบนัสการเทรด และของรางวัลพรีเมียมได้ที่ TMGM Rewards Store เพื่อยกระดับประสบการณ์ของคุณ
+
+เป็นไปตามข้อกำหนดและเงื่อนไข</div>
+        <div class="cta-link">ไปที่ REWARDS STORE: <a href="https://portal.tmgm.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/e8bd5928ca4ed44134a7a36227609bbf4b41cec1/no7invitees2_countdown_edm_3_th.png','Invitee S2 Countdown 3 — TH');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email6-ko" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">단 3일 남았습니다: $50 보상을 받으세요</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">마지막 기회입니다 – 미션을 완료하고 RAF 보너스를 잠금 해제하세요</span></div></div>
+      <div class="email-preview" id="email6-ko-content">
+        <div class="banner">$50 보상 받기
+3일 카운트다운</div>
+        <div class="salutation">[이름] 님께,</div>
+        <div class="content-block">시간이 거의 다 되었습니다. 신규 사용자 미션을 완료하고 본인과 친구 모두에게 $50 보상을 받을 수 있는 기간이 단 3일 남았습니다.
+
+보상이 만료되기 전 마지막 기회입니다. 한 번의 실행이면 충분합니다.</div>
+        <div class="content-block">마감 전 보상 받는 방법:
+
+1단계: 고객 포털에 로그인
+
+2단계: 최소 $100 첫 입금 진행
+첫 입금에만 적용되며, 누적 입금은 해당되지 않습니다
+
+3단계: 최소 1랏 거래 후 RAF 보상 수령</div>
+        <div class="cta-link">지금 입금하기: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
+        <div class="content-block">모든 거래는 $50 RAF 보상에 가까워질 뿐 아니라 리워드 포인트도 적립됩니다.
+
+적립된 포인트는 TMGM Rewards Store에서 특별 혜택, 거래 보너스 및 프리미엄 상품으로 교환할 수 있습니다.
+
+이용약관이 적용됩니다</div>
+        <div class="cta-link">REWARDS STORE 바로가기: <a href="https://portal.tmgm.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm.com/login?redirect=/tmgm-rewards</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/ab28a5324bbcd065faed04797ccedadb1f452c89/no7invitees2_countdown_edm_3_KO_v2.png','Invitee S2 Countdown 3 — KO');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  </div><!-- end collapsible -->
+</div>
+
+<!-- EMAIL 7: S3 WINNER -->
+<div id="email-7" class="email-card">
+  <div class="email-header" onclick="toggleCard(this)">
+    <div class="email-header-left">
+      <div class="email-num invitee" style="background:var(--green);">7</div>
+      <div class="email-meta"><h2>Invitee S3 — Winner! 🎉</h2><div class="trigger">Trigger: All tasks completed · Eligible to claim</div><div class="trigger" style="margin-top:2px;">Sent when invitee completes all tasks (deposit $100 + trade 1 lot). Congratulates and guides them to claim their $50 reward.</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="type-badge" style="background:var(--green-light);color:var(--green);">🎉 Winner</span>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </div>
+  </div>
+  <div class="email-collapsible">
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="switchLang(this,'email7','en')">EN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email7','id')">ID</button>
+    <button class="lang-tab" onclick="switchLang(this,'email7','vn')">VN</button>
+    <button class="lang-tab" onclick="switchLang(this,'email7','th')">TH</button>
+    <button class="lang-tab" onclick="switchLang(this,'email7','ko')">KO</button>
+  </div>
+  <div id="email7-en" class="lang-content active">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Your Refer-A-Friend Reward is Ready!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Claim your Refer-A-Friend Reward Now!</span></div></div>
+      <div class="email-preview" id="email7-en-content">
+        <div class="banner">Refer-A-Friend Reward UNLOCKED
+Claim It Now</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Congratulations! Your Refer-A-Friend reward is now unlocked and ready to claim. Redeem it in minutes and start enjoying the benefits you've earned through TMGM's Refer-a-Friend Program.</div>
+        <div class="content-block">How to Claim Your Reward:
+
+Step 1: Log in to your Client Portal and go to the Refer-a-Friend page
+
+Step 2: Click on "Claim All Rewards"
+
+Step 3: Select your preferred Trading Account and your reward will be credited</div>
+        <div class="cta-link">REDEEM NOW: <a href="https://portal.tmgm-asia.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-asia.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">Your Refer-A-Friend journey is just the beginning.
+
+Our Refer-a-Friend program never stops. Keep inviting friends and unlock even more rewards.
+
+With TMGM, you'll enjoy:
+✅ No withdrawal restrictions on RAF rewards
+✅ The freedom to boost your trading power with your bonuses
+
+T&Cs apply</div>
+        <div class="cta-link">CONTINUE NOW: <a href="https://portal.tmgm-asia.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-asia.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/00617cd907eaea1cc4baa219b51d31e6ead325e5/no8invitee_s3_winner_en.png','Invitee S3 Winner — EN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email7-id" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hadiah Refer-A-Friend Anda Siap!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Klaim Hadiah Refer-A-Friend Anda Sekarang!</span></div></div>
+      <div class="email-preview" id="email7-id-content">
+        <div class="banner">Hadiah Refer-A-Friend TERSEDIA
+Klaim Sekarang</div>
+        <div class="salutation">Dear [Name],</div>
+        <div class="content-block">Selamat! Hadiah Refer-A-Friend Anda sekarang sudah terbuka dan siap untuk diklaim. Tukarkan dalam hitungan menit dan mulai nikmati manfaat yang telah Anda peroleh melalui Program Refer-a-Friend TMGM.</div>
+        <div class="content-block">Cara Mengklaim Hadiah Anda:
+
+Langkah 1: Login ke Portal Klien Anda dan buka halaman Refer-a-Friend
+
+Langkah 2: Klik "Claim All Rewards"
+
+Langkah 3: Pilih Akun Trading yang Anda inginkan dan hadiah Anda akan dikreditkan</div>
+        <div class="cta-link">TUKARKAN SEKARANG: <a href="https://portal.tmgm-tmc.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-tmc.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">Perjalanan Refer-A-Friend Anda baru saja dimulai
+
+Program Refer-a-Friend kami tidak pernah berhenti. Terus ajak teman dan buka lebih banyak hadiah.
+
+Dengan TMGM, Anda akan menikmati:
+✅ Tidak ada batasan penarikan untuk hadiah RAF
+✅ Kebebasan untuk meningkatkan kekuatan trading Anda dengan bonus Anda
+
+S&K berlaku</div>
+        <div class="cta-link">LANJUTKAN SEKARANG: <a href="https://portal.tmgm-tmc.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm-tmc.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/00617cd907eaea1cc4baa219b51d31e6ead325e5/no8invitee_s3_winner_ID.png','Invitee S3 Winner — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email7-vn" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Phần thưởng Giới thiệu Bạn bè của bạn đã sẵn sàng!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Nhận phần thưởng Giới thiệu Bạn bè ngay!</span></div></div>
+      <div class="email-preview" id="email7-vn-content">
+        <div class="banner">Phần thưởng Giới thiệu Bạn bè đã được MỞ KHÓA
+Nhận ngay hôm nay</div>
+        <div class="salutation">Kính gửi [Tên],</div>
+        <div class="content-block">Chúc mừng! Phần thưởng Giới thiệu Bạn bè của bạn đã được mở khóa và sẵn sàng để nhận. Hãy đổi thưởng chỉ trong vài phút và bắt đầu tận hưởng những quyền lợi bạn đã đạt được thông qua Chương trình Giới thiệu Bạn bè của TMGM.</div>
+        <div class="content-block">Cách nhận thưởng:
+
+Bước 1: Đăng nhập vào Cổng Khách hàng và truy cập trang Giới thiệu Bạn bè
+
+Bước 2: Nhấp vào "Nhận tất cả phần thưởng"
+
+Bước 3: Chọn Tài khoản Giao dịch bạn muốn và phần thưởng sẽ được ghi có</div>
+        <div class="cta-link">NHẬN THƯỞNG NGAY: <a href="https://portal.tmgmprogo.com/refer-friends/invite-friends" target="_blank">https://portal.tmgmprogo.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">Hành trình Giới thiệu Bạn bè của bạn chỉ mới bắt đầu.
+
+Chương trình Giới thiệu Bạn bè của chúng tôi luôn diễn ra. Hãy tiếp tục mời bạn bè để mở khóa thêm nhiều phần thưởng hơn nữa.
+
+Với TMGM, bạn sẽ được hưởng:
+✅ Không giới hạn rút tiền đối với thưởng RAF
+✅ Tự do gia tăng sức mạnh giao dịch với tiền thưởng
+
+Áp dụng Điều khoản & Điều kiện</div>
+        <div class="cta-link">TIẾP TỤC NGAY: <a href="https://portal.tmgmprogo.com/refer-friends/invite-friends" target="_blank">https://portal.tmgmprogo.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/00617cd907eaea1cc4baa219b51d31e6ead325e5/no8invitee_s3_winner_vn.png','Invitee S3 Winner — VN');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email7-th" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">รางวัลแนะนำเพื่อนของคุณพร้อมแล้ว!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">รับรางวัลแนะนำเพื่อนของคุณตอนนี้!</span></div></div>
+      <div class="email-preview" id="email7-th-content">
+        <div class="banner">รางวัลแนะนำเพื่อนของคุณถูกปลดล็อกแล้ว
+รับเลยตอนนี้</div>
+        <div class="salutation">เรียน [ชื่อ],</div>
+        <div class="content-block">ขอแสดงความยินดี! รางวัลแนะนำเพื่อนของคุณถูกปลดล็อกและพร้อมให้รับแล้ว แลกรับภายในไม่กี่นาทีและเริ่มเพลิดเพลินกับสิทธิประโยชน์ที่คุณได้รับผ่านโปรแกรม Refer-a-Friend ของ TMGM</div>
+        <div class="content-block">วิธีรับรางวัล:
+
+ขั้นตอนที่ 1: เข้าสู่ระบบพอร์ทัลลูกค้า และไปที่หน้า Refer-a-Friend
+
+ขั้นตอนที่ 2: คลิก "Claim All Rewards"
+
+ขั้นตอนที่ 3: เลือกบัญชีเทรดที่คุณต้องการ และรางวัลจะถูกเครดิตเข้าบัญชี</div>
+        <div class="cta-link">รับรางวัลตอนนี้: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">เส้นทาง Refer-a-Friend ของคุณเพิ่งเริ่มต้น
+
+โปรแกรม Refer-a-Friend ของเราไม่มีวันหยุด เชิญเพื่อนต่อไปเพื่อปลดล็อกรางวัลเพิ่มเติม
+
+กับ TMGM คุณจะได้รับ:
+✅ ไม่มีข้อจำกัดในการถอนรางวัล RAF
+✅ อิสระในการเพิ่มพลังการเทรดด้วยโบนัสของคุณ
+
+เป็นไปตามข้อกำหนดและเงื่อนไข</div>
+        <div class="cta-link">ดำเนินการต่อเลย: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/00617cd907eaea1cc4baa219b51d31e6ead325e5/no8invitee_s3_winner_th.png','Invitee S3 Winner — TH');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  <div id="email7-ko" class="lang-content">
+    <div class="email-body">
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">추천인 보상이 준비되었습니다!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">지금 추천인 보상을 수령하세요!</span></div></div>
+      <div class="email-preview" id="email7-ko-content">
+        <div class="banner">추천인 보상 잠금 해제 완료
+지금 바로 수령하기</div>
+        <div class="salutation">[이름] 님께,</div>
+        <div class="content-block">축하드립니다! 고객님의 추천인 보상이 잠금 해제되었으며 지금 바로 수령하실 수 있습니다. 몇 분 안에 보상을 수령하고 TMGM 추천인 프로그램을 통해 획득하신 혜택을 누려보세요.</div>
+        <div class="content-block">보상 수령 방법:
+
+1단계: 고객 포털에 로그인 후 Refer-a-Friend 페이지로 이동
+
+2단계: "Claim All Rewards" 클릭
+
+3단계: 원하는 거래 계좌를 선택하면 보상이 입금됩니다</div>
+        <div class="cta-link">지금 수령하기: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="content-block">고객님의 추천 여정은 이제 시작입니다.
+
+TMGM 추천인 프로그램은 계속 진행됩니다. 친구를 더 많이 초대하고 더 많은 보상을 잠금 해제하세요.
+
+TMGM과 함께라면:
+✅ RAF 보상 출금 제한 없음
+✅ 보너스로 거래력을 자유롭게 강화 가능
+
+이용약관이 적용됩니다</div>
+        <div class="cta-link">지금 계속하기: <a href="https://portal.tmgm.com/refer-friends/invite-friends" target="_blank">https://portal.tmgm.com/refer-friends/invite-friends</a></div>
+        <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
+      </div>
+      <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/00617cd907eaea1cc4baa219b51d31e6ead325e5/no8invitee_s3_winner_ko.png','Invitee S3 Winner — KO');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
+    </div>
+  </div>
+  </div><!-- end collapsible -->
+</div>
+
+<!-- DOMAIN REFERENCE TABLE -->
+<div class="domain-ref">
+  <h3>Portal Domain Reference — Per Region</h3>
+  <div class="subtitle">Source: Marketing Operations · Green = main active domain · Use these root domains for all CTA URLs</div>
+  <table class="domain-table">
+    <thead><tr><th>Region</th><th>Website</th><th>Landing Page</th><th>Portal (Tracking)</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>🇲🇾 MY</td><td>tmgm-asia.com</td><td>lnd.tmgm-asia.com</td><td class="main-domain"><code>portal.tmgm-asia.com</code></td><td><span class="url-status active">MAIN</span></td></tr>
+      <tr><td>🇮🇩 ID</td><td>tmgm-market.com</td><td>lnd.tmgm-market.com</td><td class="main-domain"><code>portal.tmgm-tmc.com</code></td><td><span class="url-status active">MAIN</span></td></tr>
+      <tr><td>🇻🇳 VN</td><td>tmgmvn.com</td><td>lnd.tmgmvn.com</td><td class="main-domain"><code>portal.tmgmprogo.com</code></td><td><span class="url-status active">MAIN</span></td></tr>
+      <tr><td>🇹🇭 TH</td><td>tmgm.com</td><td>lnd.tmgm.com</td><td class="main-domain"><code>portal.tmgm.com</code></td><td><span class="url-status active">MAIN</span></td></tr>
+      <tr><td>🇰🇷 KO (ROW)</td><td>tmgm.com</td><td>lnd.tmgm.com</td><td class="main-domain"><code>portal.tmgm.com</code></td><td><span class="url-status active">MAIN</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div><!-- end main -->
+
+<script>
+function viewImage(url, title) {
+  var w = window.open('', '_blank');
+  w.document.write('<!DOCTYPE html><html><head><title>' + title + '</title><style>body{margin:0;background:#1a1a1a;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;}img{max-width:100%;height:auto;}</style></head><body><img src="' + url + '" alt="' + title + '"></body></html>');
+  w.document.close();
+}
+
+function toggleCard(header) {
+  const card = header.closest('.email-card');
+  const wasExpanded = card.classList.contains('expanded');
+  // Collapse all cards first
+  document.querySelectorAll('.email-card.expanded').forEach(c => c.classList.remove('expanded'));
+  // Toggle clicked card (if it was closed, open it)
+  if (!wasExpanded) card.classList.add('expanded');
+}
+
+function highlightSeq(e, node) {
+  e.preventDefault();
+  const seq = node.dataset.seq;
+  const allNodes = document.querySelectorAll('.j-node');
+  const wasActive = node.classList.contains('active-node');
+
+  // Reset all
+  allNodes.forEach(n => {
+    n.classList.remove('active-node','connected','dimmed');
+  });
+
+  // If clicking same node again, just reset (toggle off)
+  if (wasActive) return;
+
+  // Highlight connected sequence, dim others
+  allNodes.forEach(n => {
+    if (n.dataset.seq === seq) {
+      n.classList.add('connected');
+    } else {
+      n.classList.add('dimmed');
+    }
+  });
+  node.classList.add('active-node');
+  node.classList.remove('connected');
+
+  // Smooth scroll to the email card and expand it
+  const targetId = node.getAttribute('href').substring(1);
+  const targetCard = document.getElementById(targetId);
+  targetCard.classList.add('expanded');
+  targetCard.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+// Click outside journey to reset
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.journey')) {
+    document.querySelectorAll('.j-node').forEach(n => {
+      n.classList.remove('active-node','connected','dimmed');
+    });
+  }
+});
+
+function switchLang(btn, emailId, lang) {
+  const card = btn.closest('.email-card');
+  card.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
+  card.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(emailId + '-' + lang).classList.add('active');
+}
+
+function copyText(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    btn.textContent = '✓';
+    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '📋'; }, 2000);
+  });
+}
+
+function copyBlock(btn) {
+  const row = btn.closest('.content-row');
+  const block = row.querySelector('.content-block, .banner, .salutation');
+  const text = block ? block.innerText : '';
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    btn.textContent = '✓';
+    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '📋'; }, 2000);
+  });
+}
+
+function copyAllEmail(contentId) {
+  const el = document.getElementById(contentId);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = el.closest('.email-body').querySelector('.copy-all-btn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => { btn.textContent = '📋 Copy All Content'; }, 2000);
+  });
+}
+
+</script>
+</body>
+</html>
