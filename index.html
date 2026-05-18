@@ -317,8 +317,10 @@ body { font-family:var(--font); color:var(--dark); background:var(--bg); line-he
 <div class="header">
   <div class="header-inner">
     <div class="header-left">
-      <h1>Q2 2026 Refer-A-Friend — EDM Content Hub (v2)</h1>
-      <p>Campaign: 01 April – 30 June 2026 (MT4/MT5 Time) · T&C: VFSC 40356 · 7 Emails · IB Pitch removed per compliance</p>
+      <h1 style="color: #DC2626;">Q2 2026 Refer-A-Friend — EDM Content Hub <span style="color: #10B981;">(v2.1 REVISED)</span></h1>
+      <p style="color: #EF4444; font-weight: 600; margin-bottom: 8px;">🔄 REVISED VERSION — v2.1 Updates: Global lot replacements (1→5), $50→$25 pricing, language-specific content rewrites</p>
+      <p style="margin-bottom: 8px;">Promotion Period: 15 May 2026 00:00:00 – 30 June 2026 23:59:59 (MT4/MT5 Time) · Eligible Regions: Excluding Vietnam · T&C: VFSC 40356 · 7 Emails · IB Pitch removed per compliance</p>
+      <p style="color: #DC2626; font-weight: 600; font-size: 11px;">⚠️ NOTICE: Vietnamese (VN) language variant is decommissioned and will be removed. Please do not use VN content.</p>
     </div>
     <div class="header-right">
       <span class="header-badge badge-inviter">● Inviter</span>
@@ -340,10 +342,10 @@ body { font-family:var(--font); color:var(--dark); background:var(--bg); line-he
       <a href="#email-3" class="j-node invitee has-arrow-down" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip tip-bottom">Sent to invitees who haven't opened a TA. Encourages them to also become an inviter — "double the role, double the rewards."</div><div class="j-num">3</div><div class="j-name">S1(a) — Dual Role</div><div class="j-trigger">TA not opened</div><div class="j-seq-label">Invitee Flow</div></a>
     </div>
     <div class="journey-row">
-      <a href="#email-4" class="j-node invitee has-arrow-right" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">Sent 3 days after invite. First deposit reminder — 87 days remaining to complete tasks and claim $50.</div><div class="j-num">4</div><div class="j-name">S2 — Countdown 1</div><div class="j-trigger">+3 days</div><div class="j-seq-label">Invitee Flow</div></a>
-      <a href="#email-5" class="j-node invitee has-arrow-right" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">Sent 30 days after invite. Urgency builds — 60 days left to deposit $100 and trade 1 lot.</div><div class="j-num">5</div><div class="j-name">S2 — Countdown 2</div><div class="j-trigger">+30 days</div><div class="j-seq-label">Invitee Flow</div></a>
+      <a href="#email-4" class="j-node invitee has-arrow-right" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">Sent 3 days after invite. First deposit reminder — 87 days remaining to complete tasks and claim <span style="color:red">$25</span>.</div><div class="j-num">4</div><div class="j-name">S2 — Countdown 1</div><div class="j-trigger">+3 days</div><div class="j-seq-label">Invitee Flow</div></a>
+      <a href="#email-5" class="j-node invitee has-arrow-right" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">Sent 30 days after invite. Urgency builds — 60 days left to deposit $100 and trade <span style="color:red">5 lots</span>.</div><div class="j-num">5</div><div class="j-name">S2 — Countdown 2</div><div class="j-trigger">+30 days</div><div class="j-seq-label">Invitee Flow</div></a>
       <a href="#email-6" class="j-node invitee has-arrow-right" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">Sent 87 days after invite. Final push — only 3 days left! Last chance to complete tasks before expiry.</div><div class="j-num">6</div><div class="j-name">S2 — Countdown 3</div><div class="j-trigger">+87 days (final)</div><div class="j-seq-label">Invitee Flow</div></a>
-      <a href="#email-7" class="j-node invitee winner" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">🎉 Sent when invitee completes all tasks (deposit $100 + trade 1 lot). Congratulates and guides them to claim their $50 reward.</div><div class="j-num">7</div><div class="j-name">S3 — Winner 🎉</div><div class="j-trigger">Tasks complete</div><div class="j-seq-label">Invitee Flow</div></a>
+      <a href="#email-7" class="j-node invitee winner" data-seq="invitee" onclick="highlightSeq(event, this)"><div class="j-tooltip">🎉 Sent when invitee completes all tasks (deposit $100 + trade <span style="color:red">5 lots</span>). Congratulates and guides them to claim their <span style="color:red">$25</span> reward.</div><div class="j-num">7</div><div class="j-name">S3 — Winner 🎉</div><div class="j-trigger">Tasks complete</div><div class="j-seq-label">Invitee Flow</div></a>
     </div>
   </div>
 </div>
@@ -516,8 +518,8 @@ body { font-family:var(--font); color:var(--dark); background:var(--bg); line-he
               <div class="tf-name">S3 — Winner 🎉</div>
             </div>
             <div class="tf-props">
-              <div class="tf-prop"><span class="tf-prop-key" style="color:var(--green);">Trigger</span><span class="tf-prop-val">All tasks completed (deposit ≥ $100 + trade ≥ 1 lot)</span></div>
-              <div class="tf-prop"><span class="tf-prop-key" style="color:var(--green);">Action</span><span class="tf-prop-val">Eligible to claim $50 reward</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:var(--green);">Trigger</span><span class="tf-prop-val">All tasks completed (deposit ≥ $100 + trade ≥ <span style="color:red">5 lots</span>)</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:var(--green);">Action</span><span class="tf-prop-val">Eligible to claim <span style="color:red">$25</span> reward</span></div>
             </div>
           </div>
         </div>
@@ -568,7 +570,7 @@ body { font-family:var(--font); color:var(--dark); background:var(--bg); line-he
       <div class="email-preview" id="email1-en-content">
         <div class="banner">Turn Your Network Into Rewards.</div>
         <div class="salutation">Dear [Name],</div>
-        <div class="content-block">Congratulations on starting your journey with the TMGM Refer-a-Friend Program! You've taken the first step—now it's time to take it to the next level. The more friends you refer, the more rewards you can unlock. Earn $50 for yourself and $50 for each friend who successfully joins.</div>
+        <div class="content-block">Congratulations on starting your journey with the TMGM Refer-a-Friend Program! You've taken the first step—now it's time to take it to the next level. The more friends you refer, the more rewards you can unlock. Earn <span style="color:red">$25</span> for yourself and <span style="color:red">$25</span> for each friend who successfully joins.</div>
         <div class="content-block">Here are some easy ways to help you invite more friends and get the most out of your rewards:
 
 Make it simple!
@@ -597,7 +599,7 @@ T&Cs apply</div>
       <div class="email-preview" id="email1-id-content">
         <div class="banner">Ubah Jaringan Anda Menjadi Hadiah.</div>
         <div class="salutation">Dear [Name],</div>
-        <div class="content-block">Selamat memulai perjalanan Anda dengan Program TMGM Refer-a-Friend! Anda telah mengambil langkah pertama — sekarang saatnya naik ke level berikutnya. Semakin banyak teman yang Anda ajak, semakin banyak hadiah yang bisa Anda buka. Dapatkan $50 untuk diri Anda sendiri dan $50 untuk setiap teman yang berhasil bergabung.</div>
+        <div class="content-block">Selamat memulai perjalanan Anda dengan Program TMGM Refer-a-Friend! Anda telah mengambil langkah pertama — sekarang saatnya naik ke level berikutnya. Semakin banyak teman yang Anda ajak, semakin banyak hadiah yang bisa Anda buka. Dapatkan <span style="color:red">$25</span> untuk diri Anda sendiri dan <span style="color:red">$25</span> untuk setiap teman yang berhasil bergabung.</div>
         <div class="content-block">Berikut beberapa cara mudah untuk membantu Anda mengundang lebih banyak teman dan memaksimalkan hadiah Anda:
 
 Buat menjadi sederhana!
@@ -620,14 +622,14 @@ S&K berlaku</div>
       <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/4eb34bf75659bcf1e2266830330c6b876c127117/no1Inviter-1invitees_ID.png','Inviter 1 Invitee — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
     </div>
   </div>
-  <div id="email1-vn" class="lang-content">
+  <div id="email1-vn" class="lang-content" style="text-decoration: line-through; opacity: 0.5; background-color: #FEF2F2; border-left: 3px solid #DC2626; padding-left: 16px;">
     <div class="email-body">
       <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Giới thiệu thêm bạn bè, mở khóa thêm phần thưởng!</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Giới thiệu thêm bạn bè ngay để nhận thưởng</span></div></div>
       <div class="email-preview" id="email1-vn-content">
         <div class="banner">Biến mạng lưới của bạn thành phần thưởng</div>
         <div class="salutation">Kính gửi [Tên],</div>
-        <div class="content-block">Chúc mừng bạn đã bắt đầu hành trình cùng Chương trình Giới thiệu Bạn bè của TMGM! Bạn đã đi bước đầu tiên — giờ là lúc nâng lên tầm cao mới. Càng giới thiệu nhiều bạn bè, bạn càng mở khóa được nhiều phần thưởng hơn. Nhận $50 cho bạn và $50 cho mỗi người bạn đăng ký thành công.</div>
+        <div class="content-block">Chúc mừng bạn đã bắt đầu hành trình cùng Chương trình Giới thiệu Bạn bè của TMGM! Bạn đã đi bước đầu tiên — giờ là lúc nâng lên tầm cao mới. Càng giới thiệu nhiều bạn bè, bạn càng mở khóa được nhiều phần thưởng hơn. Nhận <span style="color:red">$25</span> cho bạn và <span style="color:red">$25</span> cho mỗi người bạn đăng ký thành công.</div>
         <div class="content-block">Một vài cách đơn giản để mời thêm bạn bè và tối đa hóa phần thưởng của bạn:
 
 Hãy làm thật đơn giản!
@@ -656,7 +658,7 @@ Kiểm tra bảng điều khiển Giới thiệu Bạn bè để xem ai đã tha
       <div class="email-preview" id="email1-th-content">
         <div class="banner">เปลี่ยนเครือข่ายของคุณให้เป็นรางวัล</div>
         <div class="salutation">เรียน [ชื่อ],</div>
-        <div class="content-block">ขอแสดงความยินดีที่คุณได้เริ่มต้นกับโปรแกรม Refer-a-Friend ของ TMGM! คุณได้ก้าวแรกแล้ว — ถึงเวลายกระดับให้มากขึ้น ยิ่งคุณชวนเพื่อนมากเท่าไร ยิ่งปลดล็อกรางวัลได้มากขึ้น รับ $50 สำหรับคุณ และ $50 สำหรับเพื่อนแต่ละคนที่สมัครสำเร็จ</div>
+        <div class="content-block">ขอแสดงความยินดีที่คุณเริ่มต้นเส้นทางกับโปรแกรม Refer-a-Friend ของ TMGM! <span style="background-color:yellow">คุณได้ก้าวแรกไปแล้ว ถึงเวลายกระดับให้มากขึ้น</span> ยิ่งแนะนำเพื่อนมากเท่าไหร่ ก็ยิ่งได้รับรางวัลมากเท่านั้น รับ <span style="color:red">$25</span> สำหรับตัวคุณเอง และ <span style="color:red">$25</span> สำหรับเพื่อนแต่ละคนที่เข้าร่วมสำเร็จ</div>
         <div class="content-block">วิธีง่าย ๆ ในการชวนเพื่อนและรับรางวัลให้คุ้มที่สุด:
 
 ทำให้ง่ายเข้าไว้!
@@ -685,7 +687,7 @@ Kiểm tra bảng điều khiển Giới thiệu Bạn bè để xem ai đã tha
       <div class="email-preview" id="email1-ko-content">
         <div class="banner">당신의 네트워크를 보상으로 바꾸세요</div>
         <div class="salutation">[이름] 님께,</div>
-        <div class="content-block">TMGM 추천인 프로그램을 시작하신 것을 축하드립니다! 첫 걸음을 내디디셨습니다 — 이제 한 단계 더 나아갈 시간입니다. 더 많은 친구를 초대할수록 더 많은 보상을 받을 수 있습니다. 성공적으로 가입한 친구 한 명당 $50, 그리고 본인에게도 $50가 지급됩니다.</div>
+        <div class="content-block">TMGM 추천인 프로그램을 시작하신 것을 축하드립니다! <span style="background-color:yellow">드디어 첫 걸음을 내딛으셨습니다</span>. 이제 한 단계 더 나아갈 시간입니다. 더 많은 친구를 초대할수록 더 많은 보상을 받을 수 있습니다. 성공적으로 가입한 친구 한 명당 친구와 본인 각각에게 <span style="color:red">$25</span>가 지급됩니다.</div>
         <div class="content-block">더 많은 친구를 초대하고 보상을 최대화하는 방법:
 
 간단하게 시작하세요!
@@ -732,15 +734,15 @@ Kiểm tra bảng điều khiển Giới thiệu Bạn bè để xem ai đã tha
   </div>
   <div id="email2-en" class="lang-content active">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Act Fast: $50 Referral Reward Awaits!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Act Fast: <span style="color:red">$25</span> Referral Reward Awaits!</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">What are you waiting for? Refer now!</span></div></div>
       <div class="email-preview" id="email2-en-content">
-        <div class="banner">YOUR $50 BONUS IS WAITING
+        <div class="banner">YOUR <span style="color:red">$25</span> BONUS IS WAITING
 COMPLETE YOUR SIGN-UP NOW</div>
         <div class="salutation">Dear [Name],</div>
         <div class="content-block">Congratulations on taking the first step with TMGM's Refer-a-Friend Program! 🎉
 
-You're just one step away from unlocking your reward. Simply complete your trading account sign-up and start earning up to $50 for you and $50 for your friend.</div>
+You're just one step away from unlocking your reward. Simply complete your trading account sign-up and start earning up to <span style="color:red">$25</span> for you and <span style="color:red">$25</span> for your friend.</div>
         <div class="cta-link">CONTINUE SIGN UP: <a href="https://portal.tmgm-asia.com/register" target="_blank">https://portal.tmgm-asia.com/register</a></div>
         <div class="content-block">Your reward is only a few clicks away:
 
@@ -751,7 +753,7 @@ Step 2: Make Your First Deposit
 Deposit a minimum of $100 (first deposit only).
 
 Step 3: Place Your First Trade
-Trade at least 1 lot to unlock your RAF reward.</div>
+Trade at least <span style="color:red">5 lots</span> to unlock your RAF reward.</div>
         <div class="cta-link">DEPOSIT NOW: <a href="https://portal.tmgm-asia.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-asia.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Unlock Greater Trading Opportunities – Don't Miss Out!
 
@@ -767,15 +769,15 @@ T&Cs apply</div>
   </div>
   <div id="email2-id" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Segera Bertindak: Hadiah Referensi $50 Menanti!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hadiah Referral <span style="color:red">$25</span> Menanti Anda!</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Apa yang kamu tunggu? Ajak Teman Sekarang!</span></div></div>
       <div class="email-preview" id="email2-id-content">
-        <div class="banner">BONUS $50 ANDA SEDANG MENUNGGU
+        <div class="banner">BONUS <span style="color:red">$25</span> ANDA SEDANG MENUNGGU
 SELESAIKAN PENDAFTARAN ANDA SEKARANG</div>
         <div class="salutation">Dear [Name],</div>
-        <div class="content-block">Selamat telah mengambil langkah pertama dengan Program Refer-a-Friend TMGM! 🎉
+        <div class="content-block">Selamat karena telah mengambil langkah pertama bersama Program Refer-a-Friend TMGM! 🎉
 
-Anda hanya satu langkah lagi untuk membuka hadiah Anda. Cukup selesaikan pendaftaran akun trading Anda dan mulai dapatkan $50 untuk Anda dan $50 untuk teman Anda.</div>
+Anda tinggal selangkah lagi untuk mendapatkan hadiah Anda. Cukup selesaikan pendaftaran akun trading Anda dan mulailah mendapatkan hingga <span style="color:red">$25</span> untuk Anda dan <span style="color:red">$25</span> untuk teman Anda.</div>
         <div class="cta-link">LANJUTKAN PENDAFTARAN: <a href="https://portal.tmgm-tmc.com/register" target="_blank">https://portal.tmgm-tmc.com/register</a></div>
         <div class="content-block">Hadiah Anda hanya beberapa klik lagi:
 
@@ -786,7 +788,7 @@ Langkah 2: Lakukan Deposit Pertama Anda
 Deposit minimal $100 (hanya untuk deposit pertama).
 
 Langkah 3: Lakukan Trading Pertama Anda
-Trading minimal 1 lot untuk membuka hadiah Refer-a-Friend Anda.</div>
+Trading minimal <span style="color:red">5 lot</span> untuk membuka hadiah Refer-a-Friend Anda.</div>
         <div class="cta-link">DEPOSIT SEKARANG: <a href="https://portal.tmgm-tmc.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Buka Peluang Trading Lebih Besar – Jangan Lewatkan!
 
@@ -800,17 +802,17 @@ S&K berlaku</div>
       <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/411d8383d7e41654124072e40485ab9a22ebee81/no3invitees1-signupnudge_id.png','Invitee S1 Sign Up — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
     </div>
   </div>
-  <div id="email2-vn" class="lang-content">
+  <div id="email2-vn" class="lang-content" style="text-decoration: line-through; opacity: 0.5; background-color: #FEF2F2; border-left: 3px solid #DC2626; padding-left: 16px;">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hành động ngay: Phần thưởng giới thiệu $50 đang chờ bạn!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hành động ngay: Phần thưởng giới thiệu <span style="color:red">$25</span> đang chờ bạn!</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Bạn còn chờ gì nữa? Giới thiệu ngay!</span></div></div>
       <div class="email-preview" id="email2-vn-content">
-        <div class="banner">TIỀN THƯỞNG $50 ĐANG CHỜ BẠN
+        <div class="banner">TIỀN THƯỞNG <span style="color:red">$25</span> ĐANG CHỜ BẠN
 HOÀN TẤT ĐĂNG KÝ NGAY</div>
         <div class="salutation">Kính gửi [Tên],</div>
         <div class="content-block">Chúc mừng bạn đã thực hiện bước đầu tiên với Chương trình Giới thiệu Bạn bè của TMGM! 🎉
 
-Bạn chỉ còn một bước nữa để mở khóa phần thưởng. Chỉ cần hoàn tất đăng ký tài khoản giao dịch và bắt đầu nhận tới $50 cho bạn và $50 cho bạn của bạn.</div>
+Bạn chỉ còn một bước nữa để mở khóa phần thưởng. Chỉ cần hoàn tất đăng ký tài khoản giao dịch và bắt đầu nhận tới <span style="color:red">$25</span> cho bạn và <span style="color:red">$25</span> cho bạn của bạn.</div>
         <div class="cta-link">TIẾP TỤC ĐĂNG KÝ: <a href="https://portal.tmgmprogo.com/register" target="_blank">https://portal.tmgmprogo.com/register</a></div>
         <div class="content-block">Phần thưởng của bạn chỉ cách vài cú nhấp chuột:
 
@@ -821,7 +823,7 @@ Bước 2: Thực hiện Khoản Nạp Đầu Tiên
 Nạp tối thiểu $100 (chỉ áp dụng cho lần nạp đầu tiên).
 
 Bước 3: Thực hiện Giao dịch Đầu Tiên
-Giao dịch ít nhất 1 lot để mở khóa thưởng RAF.</div>
+Giao dịch ít nhất <span style="color:red">5 lot</span> để mở khóa thưởng RAF.</div>
         <div class="cta-link">NẠP TIỀN NGAY: <a href="https://portal.tmgmprogo.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgmprogo.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Mở khóa thêm cơ hội giao dịch – Đừng bỏ lỡ!
 
@@ -837,15 +839,15 @@ Giao dịch ít nhất 1 lot để mở khóa thưởng RAF.</div>
   </div>
   <div id="email2-th" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">รีบเลย! รับรางวัลแนะนำ $50 ที่รอคุณอยู่</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">รีบเลย! รับรางวัลแนะนำ <span style="color:red">$25</span> ที่รอคุณอยู่</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">รออะไรอยู่? แนะนำเพื่อนเลย!</span></div></div>
       <div class="email-preview" id="email2-th-content">
-        <div class="banner">โบนัส $50 กำลังรอคุณอยู่
-ลงทะเบียนให้เสร็จตอนนี้</div>
+        <div class="banner">โบนัส <span style="color:red">$25</span> ของคุณกำลังรอคุณอยู่
+ลงทะเบียนให้เสร็จสมบูรณ์ได้เลยตอนนี้</div>
         <div class="salutation">เรียน [ชื่อ],</div>
         <div class="content-block">ขอแสดงความยินดีที่คุณได้เริ่มต้นกับโปรแกรม Refer-a-Friend ของ TMGM! 🎉
 
-คุณเหลืออีกเพียงหนึ่งขั้นตอนเพื่อปลดล็อกรางวัล เพียงลงทะเบียนบัญชีเทรดให้เสร็จ แล้วเริ่มรับสูงสุด $50 สำหรับคุณ และ $50 สำหรับเพื่อนของคุณ</div>
+คุณเหลืออีกเพียงหนึ่งขั้นตอนเพื่อปลดล็อกรางวัล เพียงลงทะเบียนบัญชีเทรดให้เสร็จ แล้วเริ่มรับสูงสุด <span style="color:red">$25</span> สำหรับคุณ และ <span style="color:red">$25</span> สำหรับเพื่อนของคุณ</div>
         <div class="cta-link">ดำเนินการลงทะเบียนต่อ: <a href="https://portal.tmgm.com/register" target="_blank">https://portal.tmgm.com/register</a></div>
         <div class="content-block">รางวัลของคุณอยู่แค่ไม่กี่คลิก:
 
@@ -856,7 +858,7 @@ Giao dịch ít nhất 1 lot để mở khóa thưởng RAF.</div>
 ฝากขั้นต่ำ $100 (เฉพาะการฝากครั้งแรก)
 
 ขั้นตอนที่ 3: เทรดครั้งแรก
-เทรดอย่างน้อย 1 ล็อต เพื่อปลดล็อกรางวัล RAF</div>
+เทรดอย่างน้อย 5 ล็อต เพื่อปลดล็อกรางวัล RAF</div>
         <div class="cta-link">ฝากเงินตอนนี้: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">ปลดล็อกโอกาสการเทรดที่มากขึ้น – อย่าพลาด!
 
@@ -872,15 +874,15 @@ Giao dịch ít nhất 1 lot để mở khóa thưởng RAF.</div>
   </div>
   <div id="email2-ko" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">지금 바로! $50 추천 보상이 기다립니다!</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">지금 바로! <span style="color:red">$25</span> 추천 보상이 기다립니다!</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">무엇을 기다리시나요? 지금 추천하세요!</span></div></div>
       <div class="email-preview" id="email2-ko-content">
-        <div class="banner">$50 보너스가 기다리고 있습니다
+        <div class="banner"><span style="color:red">$25</span> 보너스가 기다리고 있습니다
 지금 가입을 완료하세요</div>
         <div class="salutation">[이름] 님께,</div>
         <div class="content-block">TMGM 추천인 프로그램에 첫 발을 내디디신 것을 축하드립니다! 🎉
 
-보상을 받기까지 단 한 단계만 남았습니다. 거래 계좌 개설을 완료하고, 본인과 친구 모두 최대 $50의 보상을 받아보세요.</div>
+보상을 받기까지 단 한 단계만 남았습니다. 거래 계좌 개설을 완료하고, 본인과 친구 모두 최대 <span style="color:red">$25</span>의 보상을 받아보세요.</div>
         <div class="cta-link">가입 계속하기: <a href="https://portal.tmgm.com/register" target="_blank">https://portal.tmgm.com/register</a></div>
         <div class="content-block">보상은 몇 번의 클릭이면 충분합니다:
 
@@ -891,7 +893,7 @@ Giao dịch ít nhất 1 lot để mở khóa thưởng RAF.</div>
 최소 $100 입금 (첫 입금에 한함)
 
 3단계: 첫 거래 실행
-최소 1랏 거래 시 RAF 보상 잠금 해제</div>
+최소 5랏 거래 시 RAF 보상 잠금 해제</div>
         <div class="cta-link">지금 입금하기: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">더 큰 거래 기회를 열어보세요 – 놓치지 마세요!
 
@@ -980,7 +982,7 @@ Apa lagi yang Anda tunggu? Mulai bagikan hari ini dan saksikan jaringan Anda ber
       <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/d8d8deb3ff3183b9047aaa4db3c6cd4c74bea2e6/no4invitees1a_dualrole_id.png','Invitee S1a Dual Role — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
     </div>
   </div>
-  <div id="email3-vn" class="lang-content">
+  <div id="email3-vn" class="lang-content" style="text-decoration: line-through; opacity: 0.5; background-color: #FEF2F2; border-left: 3px solid #DC2626; padding-left: 16px;">
     <div class="email-body">
       <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Giới thiệu. Nhận thưởng. Lặp lại. Gia tăng phần thưởng cùng TMGM.</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Mời bạn bè và tận hưởng phần thưởng kép với vai trò người mời và người được mời.</span></div></div>
@@ -1067,7 +1069,7 @@ TMGM은 이제 5개 플랫폼을 통해 추천 링크를 더욱 쉽게 공유할
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num invitee">4</div>
-      <div class="email-meta"><h2>Invitee S2 — Countdown EDM 1</h2><div class="trigger">Trigger: +3 days after invite · FTD = $0</div><div class="trigger" style="margin-top:2px;">Sent 3 days after invite. First deposit reminder — 87 days remaining to complete tasks and claim $50.</div></div>
+      <div class="email-meta"><h2>Invitee S2 — Countdown EDM 1</h2><div class="trigger">Trigger: +3 days after invite · FTD = $0</div><div class="trigger" style="margin-top:2px;">Sent 3 days after invite. First deposit reminder — 87 days remaining to complete tasks and claim <span style="color:red">$25</span>.</div></div>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge badge-invitee">Invitee</span>
@@ -1084,14 +1086,14 @@ TMGM은 이제 5개 플랫폼을 통해 추천 링크를 더욱 쉽게 공유할
   </div>
   <div id="email4-en" class="lang-content active">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Act Fast! Unlock Your $50 Reward</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Act Fast! Unlock Your <span style="color:red">$25</span> Reward</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Deposit & trade now to claim your Refer-a-Friend cash bonus.</span></div></div>
       <div class="email-preview" id="email4-en-content">
-        <div class="banner">EXCLUSIVE REWARD AWAITS: UNLOCK $50</div>
+        <div class="banner">EXCLUSIVE REWARD AWAITS: UNLOCK <span style="color:red">$25</span></div>
         <div class="salutation">Dear [Name],</div>
         <div class="content-block">You are eligible for an exclusive Refer-a-Friend reward
 
-Complete your newbie tasks within 90 days and you can unlock $50 in reward for yourself and your friend.
+Complete your newbie tasks within 90 days and you can unlock <span style="color:red">$25</span> in reward for yourself and your friend.
 
 Do not leave your bonus on the table. Claim it today.</div>
         <div class="content-block">How to Claim Your Reward
@@ -1104,7 +1106,7 @@ Deposit at least $100 to qualify.
 (This applies only to your first deposit, not cumulative deposits.)
 
 Step 3: Start Trading
-Trade at least 1 lot, and your Refer-a-Friend reward of $50 will be credited.</div>
+Trade at least <span style="color:red">5 lots</span>, and your Refer-a-Friend reward of <span style="color:red">$25</span> will be credited.</div>
         <div class="cta-link">DEPOSIT NOW: <a href="https://portal.tmgm-asia.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-asia.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Here's an extra bonus for you
 
@@ -1119,27 +1121,24 @@ T&C Apply</div>
   </div>
   <div id="email4-id" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Segera Bertindak! Dapatkan Hadiah $50 Anda</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Segera Bertindak! Dapatkan Hadiah <span style="color:red">$25</span> Anda</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Deposit & trading sekarang untuk mengklaim bonus tunai Refer-a-Friend Anda.</span></div></div>
       <div class="email-preview" id="email4-id-content">
-        <div class="banner">HADIAH EKSKLUSIF MENANTI: DAPATKAN $50</div>
+        <div class="banner">HADIAH EKSKLUSIF MENANTI: DAPATKAN <span style="color:red">$25</span></div>
         <div class="salutation">Dear [Name],</div>
-        <div class="content-block">Anda memenuhi syarat untuk hadiah eksklusif Refer-a-Friend
+        <div class="content-block"><span style="background-color:yellow">Anda memenuhi syarat untuk hadiah eksklusif Refer-a-Friend</span>.
 
-Selesaikan tugas pemula Anda dalam 90 hari dan Anda dapat membuka $50 hadiah untuk Anda sendiri dan teman Anda.
+Selesaikan tugas pemula Anda dalam waktu 90 hari dan Anda bisa mendapatkan hadiah sebesar <span style="color:red">$25</span> untuk diri Anda sendiri dan <span style="color:red">$25</span> untuk teman Anda.
 
 Jangan biarkan bonus Anda terlewat. Klaim hari ini.</div>
-        <div class="content-block">Cara Mengklaim Hadiah Anda
-
-Langkah 1: Login
-Akses Portal Klien Anda dan selesaikan pengaturan akun.
+        <div class="content-block">Langkah 1: Login
+Masuk ke Client Portal Anda dan selesaikan proses pembuatan akun.
 
 Langkah 2: Lakukan Deposit Pertama Anda
-Deposit minimal $100 untuk memenuhi syarat.
-(Hanya berlaku untuk deposit pertama Anda, bukan deposit kumulatif.)
+Deposit minimum $100 (hanya untuk deposit pertama).
 
-Langkah 3: Mulai Trading
-Trading minimal 1 lot, dan hadiah Refer-a-Friend $50 akan dikreditkan.</div>
+Langkah 3: Lakukan Transaksi Pertama Anda
+Trade minimal <span style="color:red">5 lot</span> untuk membuka hadiah RAF Anda.</div>
         <div class="cta-link">DEPOSIT SEKARANG: <a href="https://portal.tmgm-tmc.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Berikut bonus tambahan untuk Anda
 
@@ -1152,16 +1151,16 @@ S&K berlaku</div>
       <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/3c770efb483007e7b5b0aceba46e06dbd308f5e1/no5invitees2_countdown_edm1_ID.png','Invitee S2 Countdown 1 — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
     </div>
   </div>
-  <div id="email4-vn" class="lang-content">
+  <div id="email4-vn" class="lang-content" style="text-decoration: line-through; opacity: 0.5; background-color: #FEF2F2; border-left: 3px solid #DC2626; padding-left: 16px;">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hành động ngay! Mở khóa phần thưởng $50 của bạn</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hành động ngay! Mở khóa phần thưởng <span style="color:red">$25</span> của bạn</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Nạp tiền & giao dịch ngay để nhận thưởng tiền mặt Refer-a-Friend</span></div></div>
       <div class="email-preview" id="email4-vn-content">
-        <div class="banner">PHẦN THƯỞNG ĐỘC QUYỀN ĐANG CHỜ: MỞ KHÓA $50</div>
+        <div class="banner">PHẦN THƯỞNG ĐỘC QUYỀN ĐANG CHỜ: MỞ KHÓA <span style="color:red">$25</span></div>
         <div class="salutation">Kính gửi [Tên],</div>
         <div class="content-block">Bạn đủ điều kiện nhận phần thưởng độc quyền từ chương trình Refer-a-Friend.
 
-Hoàn thành các nhiệm vụ dành cho người mới trong vòng 90 ngày và bạn có thể mở khóa $50 cho bạn và $50 cho bạn của bạn.
+Hoàn thành các nhiệm vụ dành cho người mới trong vòng 90 ngày và bạn có thể mở khóa <span style="color:red">$25</span> cho bạn và <span style="color:red">$25</span> cho bạn của bạn.
 
 Đừng bỏ lỡ khoản thưởng của mình. Nhận ngay hôm nay.</div>
         <div class="content-block">Cách nhận thưởng của bạn
@@ -1174,7 +1173,7 @@ Nạp tối thiểu $100 để đủ điều kiện.
 (Chỉ áp dụng cho lần nạp đầu tiên, không tính gộp nhiều lần nạp.)
 
 Bước 3: Bắt đầu giao dịch
-Giao dịch ít nhất 1 lot và phần thưởng $50 Refer-a-Friend sẽ được ghi có.</div>
+Giao dịch ít nhất <span style="color:red">5 lot</span> và phần thưởng <span style="color:red">$25</span> Refer-a-Friend sẽ được ghi có.</div>
         <div class="cta-link">NẠP TIỀN NGAY: <a href="https://portal.tmgmprogo.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgmprogo.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Thêm một ưu đãi dành cho bạn
 
@@ -1189,27 +1188,25 @@ Bạn có biết? Trong khi hoàn thành các nhiệm vụ giao dịch RAF, bạ
   </div>
   <div id="email4-th" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">รีบเลย! ปลดล็อกรางวัล $50 ของคุณ</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">รีบเลย! ปลดล็อกรางวัล <span style="color:red">$25</span> ของคุณ</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">ฝากเงินและเทรดตอนนี้เพื่อรับโบนัสเงินสด Refer-a-Friend</span></div></div>
       <div class="email-preview" id="email4-th-content">
-        <div class="banner">รางวัลพิเศษกำลังรอคุณอยู่: ปลดล็อก $50</div>
+        <div class="banner">รางวัลพิเศษกำลังรอคุณอยู่: ปลดล็อก <span style="color:red">$25</span></div>
         <div class="salutation">เรียน [ชื่อ],</div>
         <div class="content-block">คุณมีสิทธิ์รับรางวัลพิเศษจากโปรแกรม Refer-a-Friend
 
-เพียงทำภารกิจสำหรับผู้เริ่มต้นให้เสร็จภายใน 90 วัน คุณจะสามารถปลดล็อก $50 สำหรับคุณ และ $50 สำหรับเพื่อนของคุณ
+เพียงทำภารกิจสำหรับผู้เริ่มต้นให้เสร็จภายใน 90 วัน คุณจะสามารถปลดล็อก <span style="color:red">$25</span> สำหรับคุณ และ <span style="color:red">$25</span> สำหรับเพื่อนของคุณ
 
 อย่าปล่อยให้โบนัสของคุณหลุดมือ รับสิทธิ์วันนี้เลย</div>
-        <div class="content-block">วิธีรับรางวัล
-
-ขั้นตอนที่ 1: เข้าสู่ระบบ
-เข้าสู่พอร์ทัลลูกค้าและตั้งค่าบัญชีให้เสร็จสมบูรณ์
+        <div class="content-block">ขั้นตอนที่ 1: เข้าสู่ระบบ
+ เข้าสู่ Client Portal และตั้งค่าบัญชีให้เสร็จสมบูรณ์
 
 ขั้นตอนที่ 2: ฝากเงินครั้งแรก
-ฝากอย่างน้อย $100 เพื่อให้มีสิทธิ์
-(ใช้ได้เฉพาะการฝากครั้งแรก ไม่ใช่ยอดฝากสะสม)
+ฝากอย่างน้อย $100 เพื่อให้มีคุณสมบัติครบถ้วน
+(เงื่อนไขนี้ใช้กับการฝากเงินครั้งแรกเท่านั้น ไม่ใช่ยอดฝากสะสม)
 
-ขั้นตอนที่ 3: เริ่มเทรด
-เทรดอย่างน้อย 1 ล็อต แล้วรางวัล $50 Refer-a-Friend จะถูกเครดิตให้คุณ</div>
+<span style="background-color:yellow">ขั้นตอนที่ 3: เริ่มเทรด
+ เทรดอย่างน้อย 5 ล็อต</span> แล้วรางวัล <span style="color:red">$25</span> Refer-a-Friend จะถูกเครดิตให้คุณ</div>
         <div class="cta-link">ฝากเงินตอนนี้: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">โบนัสพิเศษเพิ่มเติมสำหรับคุณ
 
@@ -1224,14 +1221,14 @@ Bạn có biết? Trong khi hoàn thành các nhiệm vụ giao dịch RAF, bạ
   </div>
   <div id="email4-ko" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">지금 바로! $50 보상을 잠금 해제하세요</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">지금 바로! <span style="color:red">$25</span> 보상을 잠금 해제하세요</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">지금 입금하고 거래하여 Refer-a-Friend 현금 보너스를 받으세요</span></div></div>
       <div class="email-preview" id="email4-ko-content">
-        <div class="banner">특별 보상이 기다립니다: $50 잠금 해제</div>
+        <div class="banner">특별 보상이 기다립니다: <span style="color:red">$25</span> 잠금 해제</div>
         <div class="salutation">[이름] 님께,</div>
         <div class="content-block">고객님은 Refer-a-Friend 특별 보상 대상입니다.
 
-90일 이내에 신규 사용자 미션을 완료하면, 본인과 친구 모두에게 $50 보상을 받을 수 있습니다.
+90일 이내에 신규 사용자 미션을 완료하면, 본인과 친구 모두에게 <span style="color:red">$25</span> 보상을 받을 수 있습니다.
 
 보너스를 놓치지 마세요. 오늘 바로 받으세요.</div>
         <div class="content-block">보상 수령 방법
@@ -1244,7 +1241,7 @@ Bạn có biết? Trong khi hoàn thành các nhiệm vụ giao dịch RAF, bạ
 (첫 입금에만 적용되며, 누적 입금은 해당되지 않습니다.)
 
 3단계: 거래 시작
-최소 1랏 거래 시 $50 Refer-a-Friend 보상이 지급됩니다.</div>
+최소 5랏 거래 시 <span style="color:red">$25</span> Refer-a-Friend 보상이 지급됩니다.</div>
         <div class="cta-link">지금 입금하기: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">추가 보너스 안내
 
@@ -1265,7 +1262,7 @@ Bạn có biết? Trong khi hoàn thành các nhiệm vụ giao dịch RAF, bạ
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num invitee">5</div>
-      <div class="email-meta"><h2>Invitee S2 — Countdown EDM 2</h2><div class="trigger">Trigger: +30 days after invite · 60 days left</div><div class="trigger" style="margin-top:2px;">Sent 30 days after invite. Urgency builds — 60 days left to deposit $100 and trade 1 lot.</div></div>
+      <div class="email-meta"><h2>Invitee S2 — Countdown EDM 2</h2><div class="trigger">Trigger: +30 days after invite · 60 days left</div><div class="trigger" style="margin-top:2px;">Sent 30 days after invite. Urgency builds — 60 days left to deposit $100 and trade <span style="color:red">5 lots</span>.</div></div>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge badge-invitee">Invitee</span>
@@ -1282,15 +1279,15 @@ Bạn có biết? Trong khi hoàn thành các nhiệm vụ giao dịch RAF, bạ
   </div>
   <div id="email5-en" class="lang-content active">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Don't Miss Out: 60 Days Left to Claim $50</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Don't Miss Out: 60 Days Left to Claim <span style="color:red">$25</span></span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Deposit and trade now to unlock your Refer-a-Friend cash bonus</span></div></div>
       <div class="email-preview" id="email5-en-content">
-        <div class="banner">$50 CASH BONUS
+        <div class="banner"><span style="color:red">$25</span> CASH BONUS
 60 DAYS LEFT TO CLAIM</div>
         <div class="salutation">Dear [Name],</div>
         <div class="content-block">It's been 30 days since your invite, and your Refer-a-Friend reward is still waiting.
 
-The countdown is on. You now have 60 days left to complete your newbie tasks and unlock $50 in rewards for both you and your friend.
+The countdown is on. You now have 60 days left to complete your newbie tasks and unlock <span style="color:red">$25</span> in rewards for both you and your friend.
 
 Don't let this reward slip away.</div>
         <div class="content-block">Simple Steps to Earn Your Bonus
@@ -1300,7 +1297,7 @@ Step 1: Log in to your Client Portal
 Step 2: Make your first deposit of at least $100
 (applies only to your first deposit, not cumulative deposits)
 
-Step 3: Trade at least 1 lot, and your RAF bonus will be credited</div>
+Step 3: Trade at least <span style="color:red">5 lots</span>, and your RAF bonus will be credited</div>
         <div class="cta-link">DEPOSIT NOW: <a href="https://portal.tmgm-asia.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-asia.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Discover TMGM Rewards
 
@@ -1317,25 +1314,22 @@ T&C Apply</div>
   </div>
   <div id="email5-id" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Jangan Lewatkan: 60 Hari Tersisa untuk Mengklaim $50</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value"><span style="background-color:yellow">Jangan Sampai Terlewat: Tersisa 60 Hari untuk Klaim</span> <span style="color:red">$25</span></span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Deposit dan trading sekarang untuk membuka bonus tunai Refer-a-Friend Anda</span></div></div>
       <div class="email-preview" id="email5-id-content">
-        <div class="banner">BONUS TUNAI $50
-60 HARI TERSISA UNTUK MENGKLAIM</div>
+        <div class="banner">BONUS TUNAI <span style="color:red">$25</span>
+TERSISA 60 HARI UNTUK DIKLAIM</div>
         <div class="salutation">Dear [Name],</div>
-        <div class="content-block">Sudah 30 hari sejak undangan Anda, dan hadiah Refer-a-Friend Anda masih menunggu.
+        <div class="content-block"><span style="background-color:yellow">Sudah 30 hari sejak Anda menerima undangan</span>, dan hadiah Refer-a-Friend Anda masih menunggu.
 
-Hitungan mundur dimulai. Sekarang Anda memiliki 60 hari tersisa untuk menyelesaikan tugas awal dan mendapat $50 hadiah awal untuk Anda dan teman Anda.
+Waktu terus berjalan. Anda kini memiliki 60 hari tersisa untuk menyelesaikan tugas pemula dan mendapatkan hadiah sebesar <span style="color:red">$25</span> untuk Anda dan teman Anda.
 
 Jangan biarkan hadiah ini terlewat.</div>
-        <div class="content-block">Langkah Mudah untuk Mendapatkan Bonus Anda
+        <div class="content-block">Langkah 1: Masuk ke Portal Klien Anda
 
-Langkah 1: Login ke Portal Klien Anda
+Langkah 2: Lakukan deposit pertama minimum $100 (hanya berlaku untuk deposit pertama, bukan deposit kumulatif)
 
-Langkah 2: Lakukan deposit pertama minimal $100
-(Hanya berlaku untuk deposit pertama Anda, bukan deposit kumulatif)
-
-Langkah 3: Trading minimal 1 lot, dan bonus RAF Anda akan dikreditkan</div>
+Langkah 3: Trade minimal <span style="color:red">5 lots</span>, dan bonus RAF Anda akan dikreditkan</div>
         <div class="cta-link">DEPOSIT SEKARANG: <a href="https://portal.tmgm-tmc.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Jelajahi TMGM Rewards
 
@@ -1350,17 +1344,17 @@ S&K berlaku</div>
       <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/e40c69585c3a67c075f39e1f4e26dea5511ccdbc/no6invitees2_countdown_edm_2_ID_v2.png','Invitee S2 Countdown 2 — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
     </div>
   </div>
-  <div id="email5-vn" class="lang-content">
+  <div id="email5-vn" class="lang-content" style="text-decoration: line-through; opacity: 0.5; background-color: #FEF2F2; border-left: 3px solid #DC2626; padding-left: 16px;">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Đừng bỏ lỡ: Còn 60 ngày để nhận $50</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Đừng bỏ lỡ: Còn 60 ngày để nhận <span style="color:red">$25</span></span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Nạp tiền và giao dịch ngay để mở khóa thưởng tiền mặt Refer-a-Friend</span></div></div>
       <div class="email-preview" id="email5-vn-content">
-        <div class="banner">THƯỞNG TIỀN MẶT $50
+        <div class="banner">THƯỞNG TIỀN MẶT <span style="color:red">$25</span>
 CÒN 60 NGÀY ĐỂ NHẬN</div>
         <div class="salutation">Kính gửi [Tên],</div>
         <div class="content-block">Đã 30 ngày kể từ khi bạn được mời và phần thưởng Refer-a-Friend của bạn vẫn đang chờ.
 
-Thời gian đang đếm ngược. Bạn còn 60 ngày để hoàn thành các nhiệm vụ dành cho người mới và mở khóa $50 cho bạn và $50 cho bạn của bạn.
+Thời gian đang đếm ngược. Bạn còn 60 ngày để hoàn thành các nhiệm vụ dành cho người mới và mở khóa <span style="color:red">$25</span> cho bạn và <span style="color:red">$25</span> cho bạn của bạn.
 
 Đừng để phần thưởng này vụt mất.</div>
         <div class="content-block">Các bước đơn giản để nhận thưởng
@@ -1370,7 +1364,7 @@ Bước 1: Đăng nhập vào Cổng Khách hàng
 Bước 2: Thực hiện khoản nạp đầu tiên tối thiểu $100
 (Chỉ áp dụng cho lần nạp đầu tiên, không tính gộp nhiều lần nạp)
 
-Bước 3: Giao dịch ít nhất 1 lot và thưởng RAF sẽ được ghi có</div>
+Bước 3: Giao dịch ít nhất <span style="color:red">5 lots</span> và thưởng RAF sẽ được ghi có</div>
         <div class="cta-link">NẠP TIỀN NGAY: <a href="https://portal.tmgmprogo.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgmprogo.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Khám phá TMGM Rewards
 
@@ -1387,25 +1381,26 @@ Trong khi hoàn thành nhiệm vụ RAF, bạn cũng sẽ tích lũy điểm cho
   </div>
   <div id="email5-th" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">อย่าพลาด: เหลืออีก 60 วันเพื่อรับ $50</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">อย่าพลาด: เหลืออีก 60 วันเพื่อรับ <span style="color:red">$25</span></span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">ฝากเงินและเทรดตอนนี้เพื่อปลดล็อกโบนัสเงินสด Refer-a-Friend</span></div></div>
       <div class="email-preview" id="email5-th-content">
-        <div class="banner">โบนัสเงินสด $50
+        <div class="banner">โบนัสเงินสด <span style="color:red">$25</span>
 เหลืออีก 60 วัน</div>
         <div class="salutation">เรียน [ชื่อ],</div>
         <div class="content-block">ผ่านมาแล้ว 30 วันนับจากวันที่คุณได้รับเชิญ และรางวัล Refer-a-Friend ของคุณยังคงรออยู่
 
-เวลานับถอยหลังเริ่มแล้ว คุณมีเวลาอีก 60 วันในการทำภารกิจผู้เริ่มต้นให้ครบ และปลดล็อก $50 สำหรับคุณและ $50 สำหรับเพื่อนของคุณ
+เวลานับถอยหลังเริ่มแล้ว คุณมีเวลาอีก 60 วันในการทำภารกิจผู้เริ่มต้นให้ครบ และปลดล็อก <span style="color:red">$25</span> สำหรับคุณและ <span style="color:red">$25</span> สำหรับเพื่อนของคุณ
 
 อย่าปล่อยให้รางวัลนี้หลุดมือ</div>
-        <div class="content-block">ขั้นตอนง่าย ๆ เพื่อรับโบนัส
+        <div class="content-block">ขั้นตอนที่ 1: เข้าสู่ระบบ
+ เข้าสู่ Client Portal และตั้งค่าบัญชีให้เสร็จสมบูรณ์
 
-ขั้นตอนที่ 1: เข้าสู่ระบบพอร์ทัลลูกค้า
+ขั้นตอนที่ 2: ฝากเงินครั้งแรก
+ฝากเงินอย่างน้อย $100 เพื่อให้มีคุณสมบัติครบถ้วน
+(เงื่อนไขนี้ใช้กับการฝากเงินครั้งแรกเท่านั้น ไม่ใช่ยอดฝากสะสม)
 
-ขั้นตอนที่ 2: ฝากเงินครั้งแรกอย่างน้อย $100
-(ใช้ได้เฉพาะการฝากครั้งแรก ไม่ใช่ยอดฝากสะสม)
-
-ขั้นตอนที่ 3: เทรดอย่างน้อย 1 ล็อต แล้วโบนัส RAF จะถูกเครดิตให้คุณ</div>
+ขั้นตอนที่ 3: เริ่มเทรด
+ เทรดอย่างน้อย 5 ล็อต แล้วรางวัล <span style="color:red">$25</span> Refer-a-Friend จะถูกเครดิตให้คุณ</div>
         <div class="cta-link">ฝากเงินตอนนี้: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">ค้นพบ TMGM Rewards
 
@@ -1422,25 +1417,25 @@ Trong khi hoàn thành nhiệm vụ RAF, bạn cũng sẽ tích lũy điểm cho
   </div>
   <div id="email5-ko" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">놓치지 마세요: $50 수령까지 60일 남았습니다</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">놓치지 마세요: <span style="color:red">$25</span> 수령까지 60일 남았습니다</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">지금 입금하고 거래하여 Refer-a-Friend 현금 보너스를 받으세요</span></div></div>
       <div class="email-preview" id="email5-ko-content">
-        <div class="banner">$50 현금 보너스
+        <div class="banner"><span style="color:red">$25</span> 현금 보너스
 수령까지 60일 남음</div>
         <div class="salutation">[이름] 님께,</div>
-        <div class="content-block">초대받은 지 30일이 지났으며, Refer-a-Friend 보상이 아직 기다리고 있습니다.
+        <div class="content-block"><span style="background-color:yellow">초대받은 지 30일이 지났네요</span>. 친구 추천 보상이 아직 기다리고 있습니다.
 
-카운트다운이 시작되었습니다. 이제 신규 사용자 미션을 완료하고 본인과 친구 모두에게 $50 보상을 받을 수 있는 기간이 60일 남았습니다.
+카운트다운이 시작되었습니다. 이제 신규 사용자 미션을 완료하고 본인과 친구 모두가 <span style="color:red">$25</span> 보상을 받을 수 있는 기간이 단 60일 남았습니다.
 
 이 기회를 놓치지 마세요.</div>
-        <div class="content-block">보너스 수령을 위한 간단한 단계
+        <div class="content-block">보너스를 받기 위한 간단한 단계
 
 1단계: 고객 포털에 로그인
 
 2단계: 첫 입금으로 최소 $100 입금
 (첫 입금에만 적용되며, 누적 입금은 해당되지 않습니다)
 
-3단계: 최소 1랏 거래 시 RAF 보너스가 지급됩니다</div>
+3단계: 최소 5랏 거래 시 <span style="color:red">$25</span> 친구 추천 보상이 지급됩니다</div>
         <div class="cta-link">지금 입금하기: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">TMGM Rewards 알아보기
 
@@ -1480,13 +1475,13 @@ RAF 미션을 수행하는 동안 거래할 때마다 포인트가 적립됩니�
   </div>
   <div id="email6-en" class="lang-content active">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Only 3 Days Left: Claim Your $50 Reward</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Only 3 Days Left: Claim Your <span style="color:red">$25</span> Reward</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">This is your last chance to complete your tasks and unlock your RAF bonus</span></div></div>
       <div class="email-preview" id="email6-en-content">
-        <div class="banner">GET REWARDED WITH $50
+        <div class="banner">GET REWARDED WITH <span style="color:red">$25</span>
 3 DAYS COUNTDOWN</div>
         <div class="salutation">Dear [Name],</div>
-        <div class="content-block">Time is almost up. You have just 3 days left to complete your newbie tasks and unlock $50 in rewards for yourself and your friend.
+        <div class="content-block">Time is almost up. You have just 3 days left to complete your newbie tasks and unlock <span style="color:red">$25</span> in rewards for yourself and your friend.
 
 This is your final chance to claim your reward before it expires. One last push is all it takes.</div>
         <div class="content-block">Here's how to grab your reward before time runs out:
@@ -1496,11 +1491,11 @@ Step 1: Log in to your Client Portal
 Step 2: Deposit a minimum of $100
 * Applied to first time deposit, not accumulative deposit
 
-Step 3: Trade at least 1 lot — and get your RAF reward</div>
+Step 3: Trade at least <span style="color:red">5 lots</span> — and get your RAF reward</div>
         <div class="cta-link">DEPOSIT NOW: <a href="https://portal.tmgm-asia.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-asia.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Go Beyond the Cash Bonus
 
-Every trade you make doesn't just bring you closer to your $50 RAF reward. It also earns you Reward Points.
+Every trade you make doesn't just bring you closer to your <span style="color:red">$25</span> RAF reward. It also earns you Reward Points.
 
 Redeem these points anytime in the TMGM Rewards Store for exclusive perks, trading bonuses, and premium items designed to boost your experience.
 
@@ -1513,15 +1508,15 @@ T&C Apply</div>
   </div>
   <div id="email6-id" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Hanya Tersisa 3 Hari: Klaim Hadiah $50 Anda</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value"><span style="background-color:yellow">Tersisa 3 Hari Lagi: Klaim Hadiah</span> <span style="color:red">$25</span> Anda</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Ini adalah kesempatan terakhir Anda untuk menyelesaikan tugas dan membuka bonus RAF Anda</span></div></div>
       <div class="email-preview" id="email6-id-content">
-        <div class="banner">DAPATKAN HADIAH $50
+        <div class="banner">DAPATKAN HADIAH <span style="color:red">$25</span>
 HITUNG MUNDUR 3 HARI</div>
         <div class="salutation">Dear [Name],</div>
-        <div class="content-block">Waktu hampir habis. Anda hanya memiliki 3 hari tersisa untuk menyelesaikan tugas pemula dan membuka $50 hadiah untuk Anda dan teman Anda.
+        <div class="content-block"><span style="background-color:yellow">Waktu hampir habis. Anda hanya memiliki 3 hari lagi untuk menyelesaikan tugas pemula</span> dan mendapatkan hadiah sebesar <span style="color:red">$25</span> untuk Anda dan teman Anda.
 
-Ini adalah kesempatan terakhir Anda untuk mengklaim hadiah sebelum kadaluarsa. Satu langkah terakhir untuk mencapainya.</div>
+Ini adalah kesempatan terakhir Anda untuk mengklaim hadiah sebelum kedaluwarsa. Satu dorongan terakhir saja yang dibutuhkan.</div>
         <div class="content-block">Berikut cara mendapatkan hadiah Anda sebelum waktu habis:
 
 Langkah 1: Login ke Portal Klien Anda
@@ -1529,11 +1524,11 @@ Langkah 1: Login ke Portal Klien Anda
 Langkah 2: Deposit minimal $100
 * Berlaku untuk deposit pertama, bukan deposit kumulatif
 
-Langkah 3: Trading minimal 1 lot – dan dapatkan hadiah RAF Anda</div>
+Langkah 3: Trading minimal <span style="color:red">5 lot</span> – dan dapatkan hadiah RAF Anda</div>
         <div class="cta-link">DEPOSIT SEKARANG: <a href="https://portal.tmgm-tmc.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm-tmc.com/login?redirect=/funding/deposit</a></div>
         <div class="content-block">Lebih dari Sekadar Bonus Tunai
 
-Setiap trading yang Anda lakukan tidak hanya mendekatkan Anda pada hadiah RAF $50. Anda juga akan mendapatkan Poin Reward.
+Setiap trading yang Anda lakukan tidak hanya mendekatkan Anda pada hadiah RAF <span style="color:red">$25</span>. Anda juga akan mendapatkan Poin Reward.
 
 Tukarkan poin ini kapan saja di TMGM Rewards Store untuk keuntungan eksklusif, bonus trading, dan item premium yang dirancang untuk meningkatkan pengalaman Anda.
 
@@ -1544,15 +1539,15 @@ S&K berlaku</div>
       <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/e8bd5928ca4ed44134a7a36227609bbf4b41cec1/no7invitees2_countdown_edm_3_ID.png','Invitee S2 Countdown 3 — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
     </div>
   </div>
-  <div id="email6-vn" class="lang-content">
+  <div id="email6-vn" class="lang-content" style="text-decoration: line-through; opacity: 0.5; background-color: #FEF2F2; border-left: 3px solid #DC2626; padding-left: 16px;">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Chỉ còn 3 ngày: Nhận ngay $50 của bạn</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Chỉ còn 3 ngày: Nhận ngay <span style="color:red">$25</span> của bạn</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Cơ hội cuối cùng để hoàn thành nhiệm vụ và mở khóa thưởng RAF</span></div></div>
       <div class="email-preview" id="email6-vn-content">
-        <div class="banner">NHẬN THƯỞNG $50
+        <div class="banner">NHẬN THƯỞNG <span style="color:red">$25</span>
 ĐẾM NGƯỢC 3 NGÀY</div>
         <div class="salutation">Kính gửi [Tên],</div>
-        <div class="content-block">Thời gian sắp hết. Bạn chỉ còn 3 ngày để hoàn thành nhiệm vụ dành cho người mới và mở khóa $50 cho bạn và $50 cho bạn của bạn.
+        <div class="content-block">Thời gian sắp hết. Bạn chỉ còn 3 ngày để hoàn thành nhiệm vụ dành cho người mới và mở khóa <span style="color:red">$25</span> cho bạn và <span style="color:red">$25</span> cho bạn của bạn.
 
 Đây là cơ hội cuối cùng để nhận thưởng trước khi hết hạn. Chỉ cần thêm một bước nữa.</div>
         <div class="content-block">Cách nhận thưởng trước khi hết thời gian:
@@ -1562,9 +1557,9 @@ Bước 1: Đăng nhập vào Cổng Khách hàng
 Bước 2: Nạp tối thiểu $100
 Chỉ áp dụng cho lần nạp đầu tiên, không tính gộp nhiều lần nạp
 
-Bước 3: Giao dịch ít nhất 1 lot – và nhận thưởng RAF của bạn</div>
+Bước 3: Giao dịch ít nhất <span style="color:red">5 lot</span> – và nhận thưởng RAF của bạn</div>
         <div class="cta-link">NẠP TIỀN NGAY: <a href="https://portal.tmgmprogo.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgmprogo.com/login?redirect=/funding/deposit</a></div>
-        <div class="content-block">Mỗi giao dịch bạn thực hiện không chỉ đưa bạn đến gần hơn với $50 RAF, mà còn giúp bạn tích lũy Điểm Thưởng.
+        <div class="content-block">Mỗi giao dịch bạn thực hiện không chỉ đưa bạn đến gần hơn với <span style="color:red">$25</span> RAF, mà còn giúp bạn tích lũy Điểm Thưởng.
 
 Đổi điểm bất kỳ lúc nào tại TMGM Rewards Store để nhận đặc quyền độc quyền, thưởng giao dịch và quà tặng cao cấp nhằm nâng cao trải nghiệm của bạn.
 
@@ -1577,29 +1572,27 @@ Bước 3: Giao dịch ít nhất 1 lot – và nhận thưởng RAF của bạn
   </div>
   <div id="email6-th" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">เหลือเพียง 3 วัน: รับ $50 ของคุณตอนนี้</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">เหลือเพียง 3 วัน: รับ <span style="color:red">$25</span> ของคุณตอนนี้</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">โอกาสสุดท้ายในการทำภารกิจให้ครบและปลดล็อกโบนัส RAF</span></div></div>
       <div class="email-preview" id="email6-th-content">
-        <div class="banner">รับรางวัล $50
+        <div class="banner">รับรางวัล <span style="color:red">$25</span>
 นับถอยหลัง 3 วัน</div>
         <div class="salutation">เรียน [ชื่อ],</div>
-        <div class="content-block">เวลาใกล้หมดแล้ว คุณมีเวลาเพียง 3 วันในการทำภารกิจผู้เริ่มต้นให้ครบ และปลดล็อก $50 สำหรับคุณและ $50 สำหรับเพื่อนของคุณ
+        <div class="content-block">เวลาใกล้หมดแล้ว คุณมีเวลาเพียง 3 วันในการทำภารกิจผู้เริ่มต้นให้ครบ และปลดล็อก <span style="color:red">$25</span> สำหรับคุณและ <span style="color:red">$25</span> สำหรับเพื่อนของคุณ
 
 นี่คือโอกาสสุดท้ายก่อนรางวัลจะหมดอายุ อีกเพียงก้าวเดียวเท่านั้น</div>
-        <div class="content-block">วิธีรับรางวัลก่อนหมดเวลา:
-
-ขั้นตอนที่ 1: เข้าสู่ระบบพอร์ทัลลูกค้า
+        <div class="content-block">ขั้นตอนที่ 1: เข้าสู่ระบบ Client Portal 
 
 ขั้นตอนที่ 2: ฝากขั้นต่ำ $100
 ใช้ได้เฉพาะการฝากครั้งแรก ไม่ใช่ยอดฝากสะสม
 
-ขั้นตอนที่ 3: เทรดอย่างน้อย 1 ล็อต และรับรางวัล RAF ของคุณ</div>
+ขั้นตอนที่ 3: เทรดอย่างน้อย 5 ล็อต และรับรางวัล RAF ของคุณ</div>
         <div class="cta-link">ฝากเงินตอนนี้: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
-        <div class="content-block">ทุกการเทรดไม่เพียงช่วยให้คุณเข้าใกล้ $50 RAF มากขึ้น แต่ยังช่วยให้คุณสะสมคะแนนรางวัล
+        <div class="content-block">ทุกการเทรดที่คุณทำไม่เพียงแต่พาคุณเข้าใกล้รางวัล RAF มูลค่า <span style="color:red">$25</span> เท่านั้น แต่ยังได้รับ Reward Points อีกด้วย
 
-นำคะแนนไปแลกรับสิทธิพิเศษ โบนัสการเทรด และของรางวัลพรีเมียมได้ที่ TMGM Rewards Store เพื่อยกระดับประสบการณ์ของคุณ
+แลกรับคะแนนเหล่านี้ได้ทุกเมื่อใน TMGM Rewards Store เพื่อรับสิทธิพิเศษ โบนัสการเทรด และสินค้าพรีเมียมที่ออกแบบมาเพื่อยกระดับประสบการณ์ของคุณ
 
-เป็นไปตามข้อกำหนดและเงื่อนไข</div>
+เงื่อนไขเป็นไปตามที่กำหนด</div>
         <div class="cta-link">ไปที่ REWARDS STORE: <a href="https://portal.tmgm.com/login?redirect=/tmgm-rewards" target="_blank">https://portal.tmgm.com/login?redirect=/tmgm-rewards</a></div>
         <div class="disclaimer">Investing in CFDs carries significant risks and is not suitable for all investors. VFSC 40356</div>
       </div>
@@ -1608,13 +1601,13 @@ Bước 3: Giao dịch ít nhất 1 lot – và nhận thưởng RAF của bạn
   </div>
   <div id="email6-ko" class="lang-content">
     <div class="email-body">
-      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">단 3일 남았습니다: $50 보상을 받으세요</span></div></div>
+      <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">단 3일 남았습니다: <span style="color:red">$25</span> 보상을 받으세요</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">마지막 기회입니다 – 미션을 완료하고 RAF 보너스를 잠금 해제하세요</span></div></div>
       <div class="email-preview" id="email6-ko-content">
-        <div class="banner">$50 보상 받기
+        <div class="banner"><span style="color:red">$25</span> 보상 받기
 3일 카운트다운</div>
         <div class="salutation">[이름] 님께,</div>
-        <div class="content-block">시간이 거의 다 되었습니다. 신규 사용자 미션을 완료하고 본인과 친구 모두에게 $50 보상을 받을 수 있는 기간이 단 3일 남았습니다.
+        <div class="content-block">시간이 거의 다 되었습니다. 신규 사용자 미션을 완료하고 본인과 친구 모두에게 <span style="color:red">$25</span> 보상을 받을 수 있는 기간이 단 3일 남았습니다.
 
 보상이 만료되기 전 마지막 기회입니다. 한 번의 실행이면 충분합니다.</div>
         <div class="content-block">마감 전 보상 받는 방법:
@@ -1624,9 +1617,9 @@ Bước 3: Giao dịch ít nhất 1 lot – và nhận thưởng RAF của bạn
 2단계: 최소 $100 첫 입금 진행
 첫 입금에만 적용되며, 누적 입금은 해당되지 않습니다
 
-3단계: 최소 1랏 거래 후 RAF 보상 수령</div>
+3단계: 최소 5랏 거래 후 RAF 보상 수령</div>
         <div class="cta-link">지금 입금하기: <a href="https://portal.tmgm.com/login?redirect=/funding/deposit" target="_blank">https://portal.tmgm.com/login?redirect=/funding/deposit</a></div>
-        <div class="content-block">모든 거래는 $50 RAF 보상에 가까워질 뿐 아니라 리워드 포인트도 적립됩니다.
+        <div class="content-block">모든 거래는 <span style="color:red">$25</span> RAF 보상에 가까워질 뿐 아니라 리워드 포인트도 적립됩니다.
 
 적립된 포인트는 TMGM Rewards Store에서 특별 혜택, 거래 보너스 및 프리미엄 상품으로 교환할 수 있습니다.
 
@@ -1645,7 +1638,7 @@ Bước 3: Giao dịch ít nhất 1 lot – và nhận thưởng RAF của bạn
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num invitee" style="background:var(--green);">7</div>
-      <div class="email-meta"><h2>Invitee S3 — Winner! 🎉</h2><div class="trigger">Trigger: All tasks completed · Eligible to claim</div><div class="trigger" style="margin-top:2px;">Sent when invitee completes all tasks (deposit $100 + trade 1 lot). Congratulates and guides them to claim their $50 reward.</div></div>
+      <div class="email-meta"><h2>Invitee S3 — Winner! 🎉</h2><div class="trigger">Trigger: All tasks completed · Eligible to claim</div><div class="trigger" style="margin-top:2px;">Sent when invitee completes all tasks (deposit $100 + trade <span style="color:red">5 lots</span>). Congratulates and guides them to claim their <span style="color:red">$25</span> reward.</div></div>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge" style="background:var(--green-light);color:var(--green);">🎉 Winner</span>
@@ -1724,7 +1717,7 @@ S&K berlaku</div>
       <div class="copy-all"><a href="#" onclick="viewImage('https://raw.githubusercontent.com/tmgm5258/rafedm/00617cd907eaea1cc4baa219b51d31e6ead325e5/no8invitee_s3_winner_ID.png','Invitee S3 Winner — ID');return false;" class="copy-all-btn">🖼 Reference EDM Full Layout</a> <a href="https://bidholdinggroup.sharepoint.com/:f:/s/GlobalMarketingTMGM/IgAYz9iH1aRwT6QL6l8mpaibAV96b0cAs3DVnO9nq01ZCLQ?e=blbOFe" target="_blank" class="copy-all-btn">📁 Download EDM Assets</a></div>
     </div>
   </div>
-  <div id="email7-vn" class="lang-content">
+  <div id="email7-vn" class="lang-content" style="text-decoration: line-through; opacity: 0.5; background-color: #FEF2F2; border-left: 3px solid #DC2626; padding-left: 16px;">
     <div class="email-body">
       <div class="field"><div class="field-row"><span class="field-label">Email Subject</span><span class="field-value">Phần thưởng Giới thiệu Bạn bè của bạn đã sẵn sàng!</span></div></div>
       <div class="field"><div class="field-row"><span class="field-label">Preview Text</span><span class="field-value">Nhận phần thưởng Giới thiệu Bạn bè ngay!</span></div></div>
